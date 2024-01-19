@@ -10,9 +10,9 @@
   <img src="https://raw.githubusercontent.com/NeeasTooID/Static-HTML/main/media/Proyek%20Baru%20142%20%5B9C221E6%5D.png" width=700 />
 </p>
 
-### My About
-- 👤 NeastooID
-- 💌 I am 1999 years old 
-- 👨‍💻 Not a group of sevuh but people who are copying and pasting 
+### About
+- 👤 Created By NeastooID
+- 💌 Since 19 Jan 2024
+- 👨‍💻 Made With Dicks 
 
 ------
