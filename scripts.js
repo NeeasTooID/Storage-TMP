@@ -56,18 +56,30 @@ document.addEventListener("DOMContentLoaded", function () {
             .catch(error => console.error("Error opening folder:", error));
     }
 
-    function navigateBack() {
-        if (state.path.length > 1) {
-            state.path.pop();
-            const currentFolder = state.path[state.path.length - 1];
+function navigateBack() {
+    if (state.path.length > 1) {
+        state.path.pop();
+        const currentFolder = state.path[state.path.length - 1];
+        
+        if (currentFolder) {
             fetchFiles(`https://api.github.com/repos/NeeasTooID/Static-HTML/contents/${currentFolder}`)
                 .then(data => {
                     updateUI();
                     displayContents(data);
                 })
                 .catch(error => console.error("Error navigating back:", error));
+        } else {
+            // If currentFolder is undefined, fetch root folder contents
+            fetchFiles("https://api.github.com/repos/NeeasTooID/Static-HTML/contents")
+                .then(data => {
+                    state.path.push("Root");
+                    updateUI();
+                    displayContents(data);
+                })
+                .catch(error => console.error("Error fetching file list:", error));
         }
     }
+}
 
     function updateUI() {
         currentPath.textContent = state.path.join(" / ");
