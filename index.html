@@ -3,31 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Static HTML File Manager</title>
+  <title>Media Manager</title>
 </head>
 <body>
 
-  <h1>Static HTML File Manager</h1>
+  <h1>Media Manager</h1>
 
-  <textarea id="content" placeholder="Tambahkan konten HTML di sini"></textarea>
-  <button onclick="saveContent()">Simpan Konten</button>
+  <input type="file" id="fileInput" multiple>
+  <button onclick="uploadMedia()">Upload Media</button>
 
-  <div id="displayContent"></div>
+  <div id="mediaGallery"></div>
 
   <script>
-    function saveContent() {
-      const contentInput = document.getElementById('content');
-      const displayContent = document.getElementById('displayContent');
+    async function uploadMedia() {
+      const fileInput = document.getElementById('fileInput');
+      const mediaGallery = document.getElementById('mediaGallery');
 
-      const newContent = document.createElement('div');
-      newContent.innerHTML = contentInput.value;
+      const files = fileInput.files;
 
-      displayContent.appendChild(newContent);
-      contentInput.value = '';
+      for (const file of files) {
+        const formData = new FormData();
+        formData.append('file', file);
+
+        const response = await fetch('http://localhost:3000/upload', {
+          method: 'POST',
+          body: formData,
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          const mediaElement = document.createElement('img'); // or 'video' for video files
+          mediaElement.src = result.url;
+          mediaGallery.appendChild(mediaElement);
+        } else {
+          console.error('Upload failed');
+        }
+      }
     }
-
-    const port = process.env.PORT || 3000;
-    console.log(`Server berjalan di http://localhost:${port}`);
   </script>
 
 </body>
