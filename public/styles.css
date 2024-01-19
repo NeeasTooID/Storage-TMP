@@ -39,22 +39,3 @@ button:disabled {
     list-style-type: none;
     padding: 0;
 }
-
-iframe {
-    width: 100%;
-    height: 300px; /* Adjust height as needed */
-    border: none;
-}
-
-/* Responsive design */
-@media only screen and (max-width: 600px) {
-    body {
-        font-size: 14px;
-    }
-}
-
-@media only screen and (min-width: 601px) {
-    body {
-        font-size: 16px;
-    }
-}
