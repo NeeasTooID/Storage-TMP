@@ -3,15 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Express Static Server</title>
+  <title>Static HTML File Manager</title>
 </head>
 <body>
 
-  <script>
-    // Kode JavaScript Express yang telah diubah menjadi HTML
-    const port = process.env.PORT || 3000;
+  <h1>Static HTML File Manager</h1>
 
+  <input type="file" id="fileInput" multiple>
+  <ul id="fileList"></ul>
+
+  <script>
     document.addEventListener('DOMContentLoaded', () => {
+      const fileInput = document.getElementById('fileInput');
+      const fileList = document.getElementById('fileList');
+
+      fileInput.addEventListener('change', handleFileSelect);
+
+      function handleFileSelect(event) {
+        const files = event.target.files;
+
+        fileList.innerHTML = ''; // Clear previous list
+
+        for (const file of files) {
+          const listItem = document.createElement('li');
+          listItem.textContent = file.name;
+          fileList.appendChild(listItem);
+        }
+      }
+
+      const port = process.env.PORT || 3000;
       console.log(`Server berjalan di http://localhost:${port}`);
     });
   </script>
