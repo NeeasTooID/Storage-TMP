@@ -2,14 +2,9 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4; /* Warna latar belakang default */
-    color: #333; /* Warna teks default */
-    transition: background-color 0.3s, color 0.3s; /* Efek transisi perubahan warna */
-}
-
-.dark-mode body {
-    background-color: #333; /* Warna latar belakang mode gelap */
-    color: #fff; /* Warna teks mode gelap */
+    background-color: #f4f4f4;
+    color: #333;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
@@ -19,12 +14,8 @@ body {
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #fff; /* Warna latar belakang kontainer */
-    transition: background-color 0.3s; /* Efek transisi perubahan warna */
-}
-
-.dark-mode .container {
-    background-color: #444; /* Warna latar belakang kontainer mode gelap */
+    background-color: #fff;
+    transition: background-color 0.3s;
 }
 
 ul {
@@ -45,10 +36,28 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Tambahkan gaya untuk membuat tata letak responsif */
-@media (max-width: 600px) {
-    .container {
-        max-width: 100%;
-        margin: 20px;
-    }
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #0366d6;
+    color: #fff;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+button:hover {
+    background-color: #004080;
 }
