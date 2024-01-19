@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14]  # Sesuaikan dengan versi Node.js yang digunakan
+        node-version: [19]  # Sesuaikan dengan versi Node.js yang digunakan
 
     steps:
     - name: Checkout repository
