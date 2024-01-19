@@ -7,6 +7,11 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
+.dark-mode body {
+    background-color: #333;
+    color: #fff;
+}
+
 .container {
     max-width: 800px;
     margin: 50px auto;
@@ -16,6 +21,10 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     background-color: #fff;
     transition: background-color 0.3s;
+}
+
+.dark-mode .container {
+    background-color: #444;
 }
 
 ul {
@@ -60,4 +69,12 @@ button:disabled {
 
 button:hover {
     background-color: #004080;
+}
+
+/* Tambahkan aturan media query untuk tampilan responsif */
+@media (max-width: 600px) {
+    .container {
+        max-width: 100%;
+        margin: 20px;
+    }
 }
