@@ -9,31 +9,25 @@
 
   <h1>Static HTML File Manager</h1>
 
-  <input type="file" id="fileInput" multiple>
-  <ul id="fileList"></ul>
+  <textarea id="content" placeholder="Tambahkan konten HTML di sini"></textarea>
+  <button onclick="saveContent()">Simpan Konten</button>
+
+  <div id="displayContent"></div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const fileInput = document.getElementById('fileInput');
-      const fileList = document.getElementById('fileList');
+    function saveContent() {
+      const contentInput = document.getElementById('content');
+      const displayContent = document.getElementById('displayContent');
 
-      fileInput.addEventListener('change', handleFileSelect);
+      const newContent = document.createElement('div');
+      newContent.innerHTML = contentInput.value;
 
-      function handleFileSelect(event) {
-        const files = event.target.files;
+      displayContent.appendChild(newContent);
+      contentInput.value = '';
+    }
 
-        fileList.innerHTML = ''; // Clear previous list
-
-        for (const file of files) {
-          const listItem = document.createElement('li');
-          listItem.textContent = file.name;
-          fileList.appendChild(listItem);
-        }
-      }
-
-      const port = process.env.PORT || 3000;
-      console.log(`Server berjalan di http://localhost:${port}`);
-    });
+    const port = process.env.PORT || 3000;
+    console.log(`Server berjalan di http://localhost:${port}`);
   </script>
 
 </body>
