@@ -72,7 +72,7 @@ function navigateBack() {
             // If currentFolder is undefined, fetch root folder contents
             fetchFiles("https://api.github.com/repos/NeeasTooID/Static-HTML/contents")
                 .then(data => {
-                    state.path.push("Root");
+                    state.path.push("/");
                     updateUI();
                     displayContents(data);
                 })
@@ -90,7 +90,7 @@ function navigateBack() {
 
     fetchFiles("https://api.github.com/repos/NeeasTooID/Static-HTML/contents")
         .then(data => {
-            state.path.push("Root");
+            state.path.push("/");
             updateUI();
             displayContents(data);
         })
