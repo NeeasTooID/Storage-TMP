@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 // If currentFolder is undefined, fetch root folder contents
                 fetchFiles("https://api.github.com/repos/NeeasTooID/Static-HTML/contents")
                     .then(data => {
-                        state.path.push("Root");
+                        state.path.push("/");
                         updateUI();
                         displayContents(data);
                     })
@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     fetchFiles("https://api.github.com/repos/NeeasTooID/Static-HTML/contents")
         .then(data => {
-            state.path.push("Root");
+            state.path.push("/");
             updateUI();
             displayContents(data);
         })
