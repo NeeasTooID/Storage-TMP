@@ -3,33 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Local File Browser</title>
-    <style>
-        /* Tambahkan gaya CSS di sini */
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    <title>GitHub File Manager</title>
 </head>
 <body>
-    <h1>Local File Browser</h1>
-    
-    <!-- Tambahkan elemen HTML untuk menampilkan file dan folder di sini -->
-    <ul id="fileList"></ul>
 
-    <script>
-        // Tambahkan skrip JavaScript untuk mengambil data dari server lokal
-        document.addEventListener('DOMContentLoaded', function () {
-            fetch('http://localhost:3000/files') // Ganti dengan URL endpoint lokal Anda
-                .then(response => response.json())
-                .then(data => {
-                    const fileList = document.getElementById('fileList');
+    <div class="container">
+        <h1>GitHub File Manager</h1>
+        <ul id="file-list"></ul>
+    </div>
 
-                    data.forEach(file => {
-                        const listItem = document.createElement('li');
-                        listItem.textContent = file.name;
-                        fileList.appendChild(listItem);
-                    });
-                })
-                .catch(error => console.error('Error fetching data:', error));
-        });
-    </script>
+    <script src="scripts.js"></script>
 </body>
 </html>
