@@ -5,6 +5,7 @@ body {
     background-color: #f4f4f4;
     color: #333;
     transition: background-color 0.3s, color 0.3s;
+    align-items: top; /* Align text content at the top */
 }
 
 .dark-mode body {
@@ -91,12 +92,4 @@ button:hover {
     button {
         background-color: #004080;
     }
-}
-
-/* Make the container 30% narrower at the bottom */
-.container::before {
-    content: "";
-    display: block;
-    padding-top: 30%;
-    pointer-events: none;
 }
