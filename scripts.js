@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const fileList = document.getElementById("file-list");
+    const openRootFolderButton = document.getElementById("open-root-folder");
 
     function fetchFiles(url) {
         return fetch(url)
@@ -7,6 +8,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function displayContents(contents) {
+        fileList.innerHTML = '';  // Clear existing content
+
         contents.forEach(item => {
             const listItem = document.createElement("li");
             const link = document.createElement("a");
@@ -25,8 +28,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 listItem.appendChild(rawLink);
             } else if (item.type === "dir") {
                 const dirLink = document.createElement("a");
-                dirLink.href = item.html_url;
+                dirLink.href = "#";  // Placeholder for now
                 dirLink.textContent = item.name + "/";
+                dirLink.addEventListener("click", function () {
+                    openFolder(item.url);
+                });
+
                 listItem.appendChild(dirLink);
             }
 
@@ -34,14 +41,19 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    fetchFiles("https://api.github.com/repos/NeeasTooID/Static-HTML/contents")
-        .then(data => {
-            displayContents(data);
-            const folders = data.filter(item => item.type === "dir");
-            return Promise.all(folders.map(folder => fetchFiles(folder.url)));
-        })
-        .then(folderContents => {
-            folderContents.forEach(contents => displayContents(contents));
-        })
-        .catch(error => console.error("Error fetching file list:", error));
+    function openFolder(folderUrl) {
+        fetchFiles(folderUrl)
+            .then(data => {
+                displayContents(data);
+            })
+            .catch(error => console.error("Error opening folder:", error));
+    }
+
+    openRootFolderButton.addEventListener("click", function () {
+        fetchFiles("https://api.github.com/repos/NeeasTooID/Static-HTML/contents")
+            .then(data => {
+                displayContents(data);
+            })
+            .catch(error => console.error("Error fetching file list:", error));
+    });
 });
