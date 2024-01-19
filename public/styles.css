@@ -8,11 +8,6 @@ body {
     align-items: flex-start; /* Align text content at the top */
 }
 
-.dark-mode body {
-    background-color: #333;
-    color: #fff;
-}
-
 .container {
     max-width: 800px;
     margin: 20px auto;
@@ -24,26 +19,8 @@ body {
     transition: background-color 0.3s;
 }
 
-.dark-mode .container {
-    background-color: #444;
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-li {
-    margin-bottom: 10px;
-}
-
-a {
-    text-decoration: none;
+h1 {
     color: #0366d6;
-}
-
-a:hover {
-    text-decoration: underline;
 }
 
 .toolbar {
@@ -68,13 +45,16 @@ button:disabled {
     cursor: not-allowed;
 }
 
-button:hover {
-    background-color: #004080;
+ul {
+    list-style: none;
+    padding: 0;
 }
 
-@media (max-width: 600px) {
-    .container {
-        max-width: 100%;
-        margin: 20px;
-    }
+iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    margin-top: 20px;
 }
+
+/* Additional styles can be added based on your design preferences */
