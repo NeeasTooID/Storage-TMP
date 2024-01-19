@@ -1,6 +1,6 @@
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#table-of-contents)
 
-# `Account information`
+# `Script Information`
 >This script was created to be able to manage all media so that it can be downloaded via Raw Github with unlimited space
 
 ---------
