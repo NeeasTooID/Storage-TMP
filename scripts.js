@@ -20,17 +20,10 @@ document.addEventListener("DOMContentLoaded", function () {
             const link = document.createElement("a");
 
             if (item.type === "file") {
-                const rawLink = document.createElement("a");
-                link.href = item.html_url;
+                link.href = item.download_url;
                 link.textContent = item.name;
 
-                rawLink.href = item.download_url;
-                rawLink.textContent = "View Raw";
-                rawLink.setAttribute("target", "_blank");
-
                 listItem.appendChild(link);
-                listItem.appendChild(document.createTextNode(" | "));
-                listItem.appendChild(rawLink);
             } else if (item.type === "dir") {
                 const dirLink = document.createElement("a");
                 dirLink.href = "#";  // Placeholder for now
@@ -47,44 +40,39 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function openFolder(folderUrl, folderName) {
-    fetchFiles(folderUrl)
-        .then(data => {
-            if (data.length === 1 && data[0].type === "file") {
-                // Jika folder hanya berisi satu file, langsung buka mode "raw"
-                window.open(data[0].download_url, '_blank');
-            } else {
+        fetchFiles(folderUrl)
+            .then(data => {
                 state.path.push(folderName);
                 updateUI();
                 displayContents(data);
-            }
-        })
-        .catch(error => console.error("Error opening folder:", error));
-}
+            })
+            .catch(error => console.error("Error opening folder:", error));
+    }
 
-function navigateBack() {
-    if (state.path.length > 1) {
-        state.path.pop();
-        const currentFolder = state.path[state.path.length - 1];
-        
-        if (currentFolder) {
-            fetchFiles(`https://api.github.com/repos/NeeasTooID/Static-HTML/contents/${currentFolder}`)
-                .then(data => {
-                    updateUI();
-                    displayContents(data);
-                })
-                .catch(error => console.error("Error navigating back:", error));
-        } else {
-            // If currentFolder is undefined, fetch root folder contents
-            fetchFiles("https://api.github.com/repos/NeeasTooID/Static-HTML/contents")
-                .then(data => {
-                    state.path.push("/");
-                    updateUI();
-                    displayContents(data);
-                })
-                .catch(error => console.error("Error fetching file list:", error));
+    function navigateBack() {
+        if (state.path.length > 1) {
+            state.path.pop();
+            const currentFolder = state.path[state.path.length - 1];
+
+            if (currentFolder) {
+                fetchFiles(`https://api.github.com/repos/NeeasTooID/Static-HTML/contents/${currentFolder}`)
+                    .then(data => {
+                        updateUI();
+                        displayContents(data);
+                    })
+                    .catch(error => console.error("Error navigating back:", error));
+            } else {
+                // If currentFolder is undefined, fetch root folder contents
+                fetchFiles("https://api.github.com/repos/NeeasTooID/Static-HTML/contents")
+                    .then(data => {
+                        state.path.push("Root");
+                        updateUI();
+                        displayContents(data);
+                    })
+                    .catch(error => console.error("Error fetching file list:", error));
+            }
         }
     }
-}
 
     function updateUI() {
         currentPath.textContent = state.path.join(" / ");
@@ -95,7 +83,7 @@ function navigateBack() {
 
     fetchFiles("https://api.github.com/repos/NeeasTooID/Static-HTML/contents")
         .then(data => {
-            state.path.push("/");
+            state.path.push("Root");
             updateUI();
             displayContents(data);
         })
