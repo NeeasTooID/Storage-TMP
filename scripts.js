@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const fileList = document.getElementById("file-list");
 
-    fetch("https://api.github.com/repos/<YOUR_GITHUB_USERNAME>/<YOUR_REPOSITORY_NAME>/contents")
+    fetch("https://api.github.com/repos/NeeasTooID/Static-HTML/contents")
         .then(response => response.json())
         .then(data => {
             data.forEach(item => {
