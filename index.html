@@ -3,45 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Media Manager</title>
+  <title>Local File Browser</title>
 </head>
 <body>
-
-  <h1>Media Manager</h1>
-
+  <h1>Local File Browser</h1>
   <input type="file" id="fileInput" multiple>
-  <button onclick="uploadMedia()">Upload Media</button>
-
-  <div id="mediaGallery"></div>
+  <ul id="fileList"></ul>
 
   <script>
-    async function uploadMedia() {
-      const fileInput = document.getElementById('fileInput');
-      const mediaGallery = document.getElementById('mediaGallery');
+    const fileInput = document.getElementById('fileInput');
+    const fileListElement = document.getElementById('fileList');
 
-      const files = fileInput.files;
+    // Menanggapi perubahan pada input file
+    fileInput.addEventListener('change', handleFileSelect);
 
-      for (const file of files) {
-        const formData = new FormData();
-        formData.append('file', file);
+    function handleFileSelect(event) {
+      fileListElement.innerHTML = ''; // Bersihkan daftar file sebelumnya
 
-        const response = await fetch('http://localhost:3000/upload', {
-          method: 'POST',
-          body: formData,
-        });
+      const files = event.target.files;
 
-        const result = await response.json();
-
-        if (result.success) {
-          const mediaElement = document.createElement('img'); // or 'video' for video files
-          mediaElement.src = result.url;
-          mediaGallery.appendChild(mediaElement);
-        } else {
-          console.error('Upload failed');
-        }
+      // Menampilkan daftar file dalam HTML
+      for (let i = 0; i < files.length; i++) {
+        const fileName = files[i].name;
+        fileListElement.innerHTML += `<li>${fileName}</li>`;
       }
     }
   </script>
-
 </body>
 </html>
