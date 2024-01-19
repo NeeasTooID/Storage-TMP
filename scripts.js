@@ -47,14 +47,19 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function openFolder(folderUrl, folderName) {
-        fetchFiles(folderUrl)
-            .then(data => {
+    fetchFiles(folderUrl)
+        .then(data => {
+            if (data.length === 1 && data[0].type === "file") {
+                // Jika folder hanya berisi satu file, langsung buka mode "raw"
+                window.open(data[0].download_url, '_blank');
+            } else {
                 state.path.push(folderName);
                 updateUI();
                 displayContents(data);
-            })
-            .catch(error => console.error("Error opening folder:", error));
-    }
+            }
+        })
+        .catch(error => console.error("Error opening folder:", error));
+}
 
 function navigateBack() {
     if (state.path.length > 1) {
