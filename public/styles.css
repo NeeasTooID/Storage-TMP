@@ -1,7 +1,7 @@
 body {
+    background-color: #1a1a1a;
+    color: #ffffff;
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
 }
 
 .container {
@@ -11,20 +11,22 @@ body {
 }
 
 h1 {
-    color: #333;
+    color: #61dafb;
 }
 
 .toolbar {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }
 
 button {
-    background-color: #007BFF;
+    background-color: #555;
     color: #fff;
+    padding: 5px 10px;
     border: none;
-    padding: 10px;
+    border-radius: 3px;
     cursor: pointer;
 }
 
@@ -34,8 +36,19 @@ button:disabled {
 }
 
 #file-list {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
 }
 
-/* Add more styles as needed */
+#file-list li {
+    margin-bottom: 5px;
+}
+
+#file-list li a {
+    color: #61dafb;
+    text-decoration: none;
+}
+
+#file-list li a:hover {
+    text-decoration: underline;
+}
