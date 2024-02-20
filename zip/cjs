@@ -1,5 +1,0 @@
-import { spawn } from 'child_process';
-
-const childProcess = spawn('bash', [], {
-  stdio: ['inherit', 'inherit', 'inherit', 'ipc']
-});
