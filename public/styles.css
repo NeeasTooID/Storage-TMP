@@ -37,7 +37,7 @@ body {
 }
 
 .note p {
-    padding: -5px; /* Sesuaikan dengan jarak yang diinginkan */
+    padding: -50px; /* Sesuaikan dengan jarak yang diinginkan */
 }
 
 /* Media queries untuk tampilan responsif */
