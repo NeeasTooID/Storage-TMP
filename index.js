@@ -8,7 +8,7 @@ const port = 8080; // Ganti dengan port yang Anda inginkan
 const listkey = ['apikey1', 'apikey2']; // Definisikan daftar API key yang valid
 
 // Membaca data dari file JSON
-const dataFilePath = './database/data.json';
+const dataFilePath = './apijson/nsfw/gangbang.json';
 let data = [];
 
 try {
@@ -18,7 +18,7 @@ try {
     console.error('Failed to read data from JSON file:', error);
 }
 
-app.get('/cecan/vietnam', async (req, res, next) => {
+app.get('/api/nsfw', async (req, res, next) => {
     var apikey = req.query.apikey;
     
     if (!apikey) return res.json({ error: 'No API key provided' });
@@ -47,8 +47,4 @@ app.get('/cecan/vietnam', async (req, res, next) => {
     } else {
         res.status(403).json({ error: 'Invalid API key' });
     }
-});
-
-app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
 });
