@@ -3,59 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub README</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/vs2015.min.css">
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 20px;
-            padding: 20px;
-        }
-        .vscode-dark {
-            background-color: #1e1e1e;
-            color: #d4d4d4;
-        }
-        .vscode-light {
-            background-color: #ffffff;
-            color: #333333;
-        }
-        .markdown-body {
-            box-sizing: border-box;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            border-radius: 5px;
-            overflow-wrap: break-word;
-        }
-        .markdown-body img {
-            max-width: 100%;
-            height: auto;
-        }
-    </style>
+    <title>Custom Note</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="vscode-dark">
-    <article class="markdown-body">
-        <!-- Tempatkan konten README.md GitHub Anda di sini -->
-        <!-- Anda mungkin ingin memuatnya menggunakan JavaScript -->
-        <!-- Contoh: -->
-        <!-- <script src="https://api.github.com/repos/user/repo/readme"></script> -->
-        <!-- Jika menggunakan jQuery: -->
-        <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
-        <!-- <script> -->
-        <!--     $(function() { -->
-        <!--         $.get("https://api.github.com/repos/user/repo/readme", function(data) { -->
-        <!--             $("article.markdown-body").html(atob(data.content)); -->
-        <!--         }); -->
-        <!--     }); -->
-        <!-- </script> -->
-    </article>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-            document.querySelectorAll('pre code').forEach((block) => {
-                hljs.highlightBlock(block);
-            });
-        });
-    </script>
+<body>
+    <div class="note">
+        <h2>Your Note Title</h2>
+        <p>This is your custom note content. You can customize it as you like.</p>
+        <p>You can add more paragraphs, format the text, and style it according to your preferences.</p>
+    </div>
 </body>
 </html>
