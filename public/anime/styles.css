@@ -1,17 +1,5 @@
-/* CSS untuk memposisikan pesan sambutan di tengah */
-#welcomeMessage {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  display: none; /* awalnya disembunyikan */
-}
-
 body {
+  font-family: 'Roboto', sans-serif; /* Menggunakan font Roboto dari Google Fonts */
   margin: 0;
   padding: 0;
 }
@@ -49,4 +37,36 @@ nav ul li a {
 
 nav ul li a:hover {
   background-color: #777;
+}
+
+/* Tampilan daftar menu */
+#menuList {
+  display: none;
+  text-align: center;
+}
+
+#menuList h2 {
+  font-size: 24px;
+}
+
+#menuList ul {
+  list-style: none;
+  padding: 0;
+}
+
+#menuList ul li {
+  margin: 10px 0;
+}
+
+#menuList ul li a {
+  display: block;
+  padding: 10px;
+  background-color: #f4f4f4;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #333;
+}
+
+#menuList ul li a:hover {
+  background-color: #ddd;
 }
