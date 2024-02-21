@@ -48,3 +48,7 @@ app.get('/api/nsfw', async (req, res, next) => {
         res.status(403).json({ error: 'Invalid API key' });
     }
 });
+
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
+});
