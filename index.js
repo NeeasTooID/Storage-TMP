@@ -19,6 +19,13 @@ routerFiles.forEach(file => {
     app.use(`/${routerName}`, router);
 });
 
+// Middleware untuk menangani permintaan total hit
+app.use('/total-hits', (req, res, next) => {
+    // Hitung total hit secara lokal (misalnya, dari penyimpanan lokal atau database)
+    const totalHits = Math.floor(Math.random() * 1000); // Nilai acak antara 0 hingga 999
+    res.json({ totalHits });
+});
+
 // Mengalihkan semua permintaan yang tidak cocok dengan file statis ke halaman beranda (index.html)
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
