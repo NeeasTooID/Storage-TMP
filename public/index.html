@@ -3,33 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link rel="shortcut icon" href="https://telegra.ph/file/72691719222ce388efec2.jpg" type="image/x-icon">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="container">
-        <h1>Welcome to Dashboard</h1>
-    </div>
-
-    <div id="readme-content" class="container"></div>
-
-    <script src="script.js"></script>
-    <script>
-        // Fungsi untuk mengambil dan menampilkan konten README.md
-        function displayReadme() {
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', 'README.md', true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    document.getElementById('readme-content').innerHTML = xhr.responseText;
-                }
-            };
-            xhr.send();
+    <title>GitHub README</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/vs2015.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            padding: 20px;
         }
-
-        // Panggil fungsi untuk menampilkan konten README.md
-        displayReadme();
+        .vscode-dark {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+        }
+        .vscode-light {
+            background-color: #ffffff;
+            color: #333333;
+        }
+        .markdown-body {
+            box-sizing: border-box;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-wrap: break-word;
+        }
+        .markdown-body img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body class="vscode-dark">
+    <article class="markdown-body">
+        <!-- Tempatkan konten README.md GitHub Anda di sini -->
+        <!-- Anda mungkin ingin memuatnya menggunakan JavaScript -->
+        <!-- Contoh: -->
+        <!-- <script src="https://api.github.com/repos/user/repo/readme"></script> -->
+        <!-- Jika menggunakan jQuery: -->
+        <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+        <!-- <script> -->
+        <!--     $(function() { -->
+        <!--         $.get("https://api.github.com/repos/user/repo/readme", function(data) { -->
+        <!--             $("article.markdown-body").html(atob(data.content)); -->
+        <!--         }); -->
+        <!--     }); -->
+        <!-- </script> -->
+    </article>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.querySelectorAll('pre code').forEach((block) => {
+                hljs.highlightBlock(block);
+            });
+        });
     </script>
 </body>
 </html>
