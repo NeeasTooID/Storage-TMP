@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "index.js", // Ganti dengan berkas utama Anda
+      "use": "@vercel/node"
+    }
+  ]
+}
