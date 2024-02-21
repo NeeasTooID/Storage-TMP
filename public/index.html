@@ -5,67 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="shortcut icon" href="https://telegra.ph/file/72691719222ce388efec2.jpg" type="image/x-icon">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f0f0f0;
-        }
-
-        .container {
-            text-align: center;
-        }
-
-        .btn {
-            display: inline-block;
-            margin: 10px;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background-color: #0056b3;
-        }
-
-        /* Dark mode */
-        @media (prefers-color-scheme: dark) {
-            body {
-                background-color: #333;
-                color: #fff;
-            }
-
-            .btn {
-                background-color: #444;
-            }
-
-            .btn:hover {
-                background-color: #666;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <h1>Welcome to Dashboard</h1>
-        <a class="btn" href="/anime">Random Anime</a>
-        <a class="btn" href="/games">Random Games</a>
-        <a class="btn" href="/pinterest">Random Pinterest</a>
+        <button class="btn" onclick="getRandomImage('anime')">Anime Viture</button>
+        <button class="btn" onclick="getRandomImage('games')">Game Viture</button>
+        <button class="btn" onclick="getRandomImage('pinterest')">Pinterest Viture</button>
     </div>
-
-    <script>
-        function getRandomImage(category) {
-            // Redirect to the corresponding route
-            window.location.href = `/${category}`;
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
