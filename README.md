@@ -7,12 +7,12 @@
 
 <h1 align="center">Example of Website Display</h1>
 <p align="center">
-  <img src="https://raw.githubusercontent.com/NeeasTooID/Static-HTML/main/media/Proyek%20Baru%20145%20%5BA699A9C%5D.png" width=700 />
+  <img src="https://raw.githubusercontent.com/NeeasTooID/Static-HTML/main/media/image.png" width=700 />
 </p>
 
 ### About
 - 👤 Created By NeastooID
 - 💌 Since 19 Jan 2024
-- 👨‍💻 Made With Dicks 
+- 👨‍💻 Made With Tender Heart 
 
 ------
