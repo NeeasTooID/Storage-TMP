@@ -1,16 +1,21 @@
 window.addEventListener('DOMContentLoaded', () => {
-    getTotalHits();
-    getTimeInZone('Asia/Jakarta', 'wib-time');
-    getTimeInZone('Asia/Jayapura', 'wit-time');
+    updateTotalHits();
+    updateTimeInZone('Asia/Jakarta', 'wib-time');
+    updateTimeInZone('Asia/Jayapura', 'wit-time');
+    setInterval(updateTimeInZone.bind(null, 'Asia/Jakarta', 'wib-time'), 1000); // Perbarui setiap 1 detik
+    setInterval(updateTimeInZone.bind(null, 'Asia/Jayapura', 'wit-time'), 1000); // Perbarui setiap 1 detik
 });
 
-function getTotalHits() {
-    // Hitung total hit secara lokal (misalnya, dari penyimpanan lokal atau database)
-    const totalHits = Math.floor(Math.random() * 1000); // Nilai acak antara 0 hingga 999
-    document.getElementById('total-hits').textContent = totalHits;
+function updateTotalHits() {
+    fetch('/total-hits')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('total-hits').textContent = data.totalHits;
+        })
+        .catch(error => console.error('Error fetching total hits:', error));
 }
 
-function getTimeInZone(timezone, elementId) {
+function updateTimeInZone(timezone, elementId) {
     const options = {
         timeZone: timezone,
         hour: 'numeric',
