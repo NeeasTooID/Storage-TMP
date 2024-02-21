@@ -4,7 +4,7 @@ const fs = require('fs');
 const request = require('request');
 const path = require('path');
 
-router.get('/anime/', (req, res) => {
+router.get('anime/', (req, res) => {
     const dataFilePath = path.join(__dirname, '..', 'apijson', 'anime', 'waifu.json');
     try {
         const rawData = fs.readFileSync(dataFilePath);
