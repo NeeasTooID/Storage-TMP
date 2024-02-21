@@ -3,28 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyAnimeList</title>
+    <title>Dashboard</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="mal_logo.png" alt="MyAnimeList">
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#">Anime</a></li>
-                <li><a href="#">Manga</a></li>
-                <li><a href="#">Community</a></li>
-                <!-- Tambahkan lebih banyak item menu di sini -->
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <!-- Konten utama situs web Anda bisa ditambahkan di sini -->
-    </main>
-    <footer>
-        <p>Hak Cipta &copy; 2024 MyAnimeList</p>
-    </footer>
+    <div class="container">
+        <h1>Welcome to Dashboard</h1>
+        <button class="btn" onclick="getRandomImage('anime')">Random Anime</button>
+        <button class="btn" onclick="getRandomImage('games')">Random Games</button>
+        <button class="btn" onclick="getRandomImage('pinterest')">Random Pinterest</button>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
