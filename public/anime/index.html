@@ -9,11 +9,16 @@
 <body>
     <div class="container">
         <h1>Welcome to Dashboard Anime</h1>
-        <button class="btn" onclick="getRandomImage('anime')">Random Anime</button>
-        <button class="btn" onclick="getRandomImage('games')">Random Games</button>
-        <button class="btn" onclick="getRandomImage('pinterest')">Random Pinterest</button>
+        <button class="btn" onclick="redirectTo('rwaifu')">Random Waifu</button>
+        <button class="btn" onclick="redirectTo('rmaid')">Random Maid</button>
+        <button class="btn" onclick="redirectTo('nrandom')">Random N</button>
     </div>
 
     <script src="script.js"></script>
+    <script>
+        function redirectTo(route) {
+            window.location.href = route + ".html";
+        }
+    </script>
 </body>
 </html>
