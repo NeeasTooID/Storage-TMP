@@ -9,7 +9,7 @@ let previousImageUrl = null;
 
 router.get('/', async (req, res) => {
     // Baca data dari file JSON
-    const dataFilePath = path.join(__dirname, '..', '..', 'apijson', 'anime', 'waifu.json');
+    const dataFilePath = path.join(__dirname, '..', 'apijson', 'anime', 'waifu.json');
     try {
         const rawData = fs.readFileSync(dataFilePath);
         const data = JSON.parse(rawData);
