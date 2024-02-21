@@ -37,7 +37,7 @@ body {
 }
 
 .note p {
-    margin-top: 10px; /* Sesuaikan dengan jarak yang diinginkan */
+    margin-top: 1px; /* Sesuaikan dengan jarak yang diinginkan */
 }
 
 /* Media queries untuk tampilan responsif */
