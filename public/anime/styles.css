@@ -1,20 +1,24 @@
-body {
-  font-family: 'Roboto', sans-serif; /* Menggunakan font Roboto dari Google Fonts */
+/* Reset CSS */
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+body {
+  font-family: 'Roboto', sans-serif; /* Menggunakan font Roboto dari Google Fonts */
+}
+
 header {
-  background-color: #333;
+  background-color: #7289da; /* Warna biru Discord */
   color: #fff;
   padding: 20px;
   text-align: center;
 }
 
 nav {
-  background-color: #555;
+  background-color: #4f545c; /* Warna latar belakang menu */
   padding: 10px;
-  margin-top: 20px; /* Menambahkan margin atas */
 }
 
 nav ul {
@@ -25,27 +29,27 @@ nav ul {
 }
 
 nav ul li {
-  display: inline;
-  margin-right: 15px; /* Menambahkan jarak antar menu */
+  display: inline-block; /* Mengubah menu menjadi inline-block */
+  margin-right: 15px;
 }
 
 nav ul li a {
   color: #fff;
   text-decoration: none;
-  padding: 5px 15px; /* Menambahkan padding menu */
+  padding: 10px 20px; /* Menambahkan padding menu */
   border-radius: 5px;
   transition: background-color 0.3s ease; /* Efek transisi hover */
 }
 
 nav ul li a:hover {
-  background-color: #777;
+  background-color: #677bc4; /* Warna latar belakang menu hover */
 }
 
 /* Tampilan daftar menu */
 #menuList {
   display: none;
   text-align: center;
-  margin-top: 50px; /* Menambahkan margin atas */
+  margin-top: 20px;
 }
 
 #menuList h2 {
