@@ -22,11 +22,7 @@
   </div>
   <div id="menuList" style="display:none;">
     <h2>Menu Pilihan</h2>
-    <ul id="menuWaifu">
-      <li>Waifu | Total Click | <a href="#">Get</a></li>
-      <li>Waifu | Total Click | <a href="#">Get</a></li>
-      <li>Waifu | Total Click | <a href="#">Get</a></li>
-    </ul>
+    <ul id="menuWaifu"></ul>
     <ul id="menuMaid"></ul>
     <ul id="menuAnime"></ul>
   </div>
@@ -34,6 +30,28 @@
     <h2>Selamat Datang!</h2>
     <p>Silakan pilih menu di atas untuk melihat konten.</p>
   </div>
-  <script src="script.js"></script>
+
+  <script>
+    // Ambil elemen-elemen menu
+    const animeMenu = document.getElementById('anime');
+    const waifuMenu = document.getElementById('waifu');
+    const maidMenu = document.getElementById('maid');
+
+    // Ambil elemen konten
+    const contentDiv = document.getElementById('content');
+
+    // Tambahkan event listener untuk setiap menu
+    animeMenu.addEventListener('click', function() {
+      contentDiv.innerHTML = '<h2>Anime</h2><p>Daftar anime akan ditampilkan di sini.</p>';
+    });
+
+    waifuMenu.addEventListener('click', function() {
+      contentDiv.innerHTML = '<h2>Waifu</h2><p>Daftar waifu akan ditampilkan di sini.</p>';
+    });
+
+    maidMenu.addEventListener('click', function() {
+      contentDiv.innerHTML = '<h2>Maid</h2><p>Daftar maid akan ditampilkan di sini.</p>';
+    });
+  </script>
 </body>
 </html>
