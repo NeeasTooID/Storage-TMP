@@ -1,75 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NeastooID API</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web API</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <h1>Neast API</h1>
-  </header>
-  <nav>
-    <ul>
-      <li><a id="anime" data-router="animemenu">Anime</a></li>
-      <li><a id="waifu" data-router="waifumenu">Waifu</a></li>
-      <li><a id="maid" data-router="maidmenu">Maid</a></li>
-    </ul>
-  </nav>
-  <div id="content">
-    <!-- Konten akan dimuat di sini -->
-  </div>
-  <div id="menuList" style="display:none;">
-    <h2>Menu Pilihan</h2>
-    <ul id="menuWaifu"></ul>
-    <ul id="menuMaid"></ul>
-    <ul id="menuAnime"></ul>
-  </div>
-  <div id="welcomeMessage">
-    <h2>Selamat Datang!</h2>
-    <p>Silakan pilih menu di atas untuk melihat konten.</p>
-  </div>
-
-  <script>
-    // Ambil elemen-elemen menu
-    const animeMenu = document.getElementById('anime');
-    const waifuMenu = document.getElementById('waifu');
-    const maidMenu = document.getElementById('maid');
-
-    // Ambil elemen konten
-    const contentDiv = document.getElementById('content');
-
-    // Tambahkan event listener untuk setiap menu
-    animeMenu.addEventListener('click', function() {
-      navigateTo(animeMenu.getAttribute('data-router'));
-    });
-
-    waifuMenu.addEventListener('click', function() {
-      navigateTo(waifuMenu.getAttribute('data-router'));
-    });
-
-    maidMenu.addEventListener('click', function() {
-      navigateTo(maidMenu.getAttribute('data-router'));
-    });
-
-    // Fungsi untuk menavigasi ke router yang dipilih
-    function navigateTo(router) {
-      switch (router) {
-        case 'animemenu':
-          contentDiv.innerHTML = '<h2>Anime Menu</h2><p>Anda berada di halaman Anime.</p>';
-          break;
-        case 'waifumenu':
-          contentDiv.innerHTML = '<h2>Waifu Menu</h2><p>Anda berada di halaman Waifu.</p>';
-          break;
-        case 'maidmenu':
-          contentDiv.innerHTML = '<h2>Maid Menu</h2><p>Anda berada di halaman Maid.</p>';
-          break;
-        default:
-          contentDiv.innerHTML = '<h2>404 Not Found</h2><p>Halaman tidak ditemukan.</p>';
-          break;
-      }
-    }
-  </script>
+    <header>
+        <h1>Web API</h1>
+    </header>
+    <nav>
+        <a href="#">Button 1</a>
+        <a href="#">Button 2</a>
+        <a href="#">Button 3</a>
+    </nav>
+    <main>
+        <!-- Konten utama situs web Anda bisa ditambahkan di sini -->
+    </main>
+    <footer>
+        <p>Hak Cipta &copy; 2024 Web Anda</p>
+    </footer>
 </body>
 </html>
