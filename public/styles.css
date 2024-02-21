@@ -36,6 +36,10 @@ body {
     border-bottom: none;
 }
 
+.note p {
+    margin-top: 10px; /* Sesuaikan dengan jarak yang diinginkan */
+}
+
 /* Media queries untuk tampilan responsif */
 @media screen and (max-width: 600px) {
     .note {
