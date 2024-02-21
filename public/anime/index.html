@@ -12,9 +12,9 @@
   </header>
   <nav>
     <ul>
-      <li><a href="#" id="anime">Anime</a></li>
-      <li><a href="#" id="waifu">Waifu</a></li>
-      <li><a href="#" id="maid">Maid</a></li>
+      <li><a id="anime" data-router="animemenu">Anime</a></li>
+      <li><a id="waifu" data-router="waifumenu">Waifu</a></li>
+      <li><a id="maid" data-router="maidmenu">Maid</a></li>
     </ul>
   </nav>
   <div id="content">
@@ -42,16 +42,34 @@
 
     // Tambahkan event listener untuk setiap menu
     animeMenu.addEventListener('click', function() {
-      contentDiv.innerHTML = '<h2>Anime</h2><p>Daftar anime akan ditampilkan di sini.</p>';
+      navigateTo(animeMenu.getAttribute('data-router'));
     });
 
     waifuMenu.addEventListener('click', function() {
-      contentDiv.innerHTML = '<h2>Waifu</h2><p>Daftar waifu akan ditampilkan di sini.</p>';
+      navigateTo(waifuMenu.getAttribute('data-router'));
     });
 
     maidMenu.addEventListener('click', function() {
-      contentDiv.innerHTML = '<h2>Maid</h2><p>Daftar maid akan ditampilkan di sini.</p>';
+      navigateTo(maidMenu.getAttribute('data-router'));
     });
+
+    // Fungsi untuk menavigasi ke router yang dipilih
+    function navigateTo(router) {
+      switch (router) {
+        case 'animemenu':
+          contentDiv.innerHTML = '<h2>Anime Menu</h2><p>Anda berada di halaman Anime.</p>';
+          break;
+        case 'waifumenu':
+          contentDiv.innerHTML = '<h2>Waifu Menu</h2><p>Anda berada di halaman Waifu.</p>';
+          break;
+        case 'maidmenu':
+          contentDiv.innerHTML = '<h2>Maid Menu</h2><p>Anda berada di halaman Maid.</p>';
+          break;
+        default:
+          contentDiv.innerHTML = '<h2>404 Not Found</h2><p>Halaman tidak ditemukan.</p>';
+          break;
+      }
+    }
   </script>
 </body>
 </html>
