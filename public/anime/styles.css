@@ -1,5 +1,17 @@
+/* CSS untuk memposisikan pesan sambutan di tengah */
+#welcomeMessage {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  display: none; /* awalnya disembunyikan */
+}
+
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -37,8 +49,4 @@ nav ul li a {
 
 nav ul li a:hover {
   background-color: #777;
-}
-
-#content {
-  padding: 20px;
 }
