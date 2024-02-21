@@ -1,3 +1,7 @@
+document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById("welcomeMessage").style.display = "block";
+});
+
 document.getElementById('anime').addEventListener('click', function() {
   document.getElementById('content').innerHTML = '<h2>Anime</h2><p>Daftar anime akan ditampilkan di sini.</p>';
 });
