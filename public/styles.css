@@ -24,7 +24,7 @@ body {
 }
 .menu-item {
     display: block;
-    padding: 8px 0;
+    padding: 4px 0;
     border-bottom: 1px solid #555;
 }
 .menu-item:last-child {
