@@ -9,7 +9,6 @@
   "routes": [
     { "src": "/anime", "dest": "router/anime.js" },
     { "src": "/games", "dest": "router/games.js" },
-    { "src": "/pinterest", "dest": "router/pinterest.js" },
-    { "src": "/(.*)", "dest": "router/default.js" }
+    { "src": "/pinterest", "dest": "router/pinterest.js" }
   ]
 }
