@@ -5,13 +5,8 @@
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "outDir": "./dist", // Direktori output untuk file JavaScript
-    "rootDir": "./" // Direktori sumber untuk file TypeScript (root proyek)
+    "forceConsistentCasingInFileNames": true
   },
-  "include": [
-    "*.ts" // Menambahkan semua berkas TypeScript di root proyek
-  ],
   "exclude": [
     "node_modules"
   ]
