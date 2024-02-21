@@ -6,6 +6,7 @@ body {
     padding: 20px;
     box-sizing: border-box;
 }
+
 .note {
     background-color: #121212;
     border-radius: 10px;
@@ -14,19 +15,30 @@ body {
     max-width: 500px;
     margin: 0 auto;
 }
+
 .note h2 {
     margin-top: 0;
     font-size: 24px;
 }
+
 .menu-list {
     list-style-type: none;
     padding: 0;
 }
+
 .menu-item {
     display: block;
     padding: 4px 0;
     border-bottom: 1px solid #555;
 }
+
 .menu-item:last-child {
     border-bottom: none;
+}
+
+/* Media queries untuk tampilan responsif */
+@media screen and (max-width: 600px) {
+    .note {
+        max-width: 90%;
+    }
 }
