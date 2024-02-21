@@ -3,19 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="shortcut icon" href="https://telegra.ph/file/6686f3560a62e94e55816.jpg" type="image/x-icon" />
-    <title>File Manager</title>
 </head>
 <body>
     <div class="container">
-        <h1>File Manager</h1>
-        <div class="toolbar">
-            <button id="back-button" disabled>&larr; Back</button>
-            <span id="current-path">Root</span>
-        </div>
-        <ul id="file-list"></ul>
-        </div>
-    <script src="scripts.js"></script>
+        <h1>Welcome to Dashboard</h1>
+        <button class="btn" onclick="getRandomImage('anime')">Random Anime</button>
+        <button class="btn" onclick="getRandomImage('games')">Random Games</button>
+        <button class="btn" onclick="getRandomImage('pinterest')">Random Pinterest</button>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
