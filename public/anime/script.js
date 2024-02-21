@@ -3,9 +3,19 @@ document.getElementById('anime').addEventListener('click', function() {
 });
 
 document.getElementById('waifu').addEventListener('click', function() {
-  document.getElementById('content').innerHTML = '<h2>Waifu</h2><p>Daftar waifu akan ditampilkan di sini.</p>';
+  document.getElementById('content').innerHTML = '';
+  document.getElementById('menuList').style.display = 'block';
+  document.getElementById('menuWaifu').innerHTML = '<h3>Waifu Random</h3>';
+  for (let i = 0; i < 5; i++) {
+    document.getElementById('menuWaifu').innerHTML += '<li>Waifu ' + (i + 1) + '</li>';
+  }
 });
 
 document.getElementById('maid').addEventListener('click', function() {
-  document.getElementById('content').innerHTML = '<h2>Maid</h2><p>Daftar maid akan ditampilkan di sini.</p>';
+  document.getElementById('content').innerHTML = '';
+  document.getElementById('menuList').style.display = 'block';
+  document.getElementById('menuMaid').innerHTML = '<h3>Maid Random</h3>';
+  for (let i = 0; i < 5; i++) {
+    document.getElementById('menuMaid').innerHTML += '<li>Maid ' + (i + 1) + '</li>';
+  }
 });
