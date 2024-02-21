@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist", // Direktori output untuk file JavaScript
+    "rootDir": "./" // Direktori sumber untuk file TypeScript (root proyek)
+  },
+  "include": [
+    "*.ts" // Menambahkan semua berkas TypeScript di root proyek
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
