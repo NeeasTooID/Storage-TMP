@@ -10,10 +10,26 @@
 <body>
     <div class="container">
         <h1>Welcome to Dashboard</h1>
-        <button class="btn" onclick="getRandomImage('anime')">Anime Viture</button>
-        <button class="btn" onclick="getRandomImage('games')">Game Viture</button>
-        <button class="btn" onclick="getRandomImage('pinterest')">Pinterest Viture</button>
     </div>
+
+    <div id="readme-content" class="container"></div>
+
     <script src="script.js"></script>
+    <script>
+        // Fungsi untuk mengambil dan menampilkan konten README.md
+        function displayReadme() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'README.md', true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    document.getElementById('readme-content').innerHTML = xhr.responseText;
+                }
+            };
+            xhr.send();
+        }
+
+        // Panggil fungsi untuk menampilkan konten README.md
+        displayReadme();
+    </script>
 </body>
 </html>
