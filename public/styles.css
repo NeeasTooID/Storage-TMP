@@ -18,7 +18,15 @@ body {
     margin-top: 0;
     font-size: 24px;
 }
-.note p {
-    font-size: 16px;
-    line-height: 1.5;
+.menu-list {
+    list-style-type: none;
+    padding: 0;
+}
+.menu-item {
+    display: block;
+    padding: 8px 0;
+    border-bottom: 1px solid #555;
+}
+.menu-item:last-child {
+    border-bottom: none;
 }
