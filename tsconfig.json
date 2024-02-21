@@ -7,6 +7,9 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
+  "include": [
+    "index.js"
+  ],
   "exclude": [
     "node_modules"
   ]
