@@ -7,8 +7,9 @@
     }
   ],
   "routes": [
-    { "handle": "router/anime.js", "src": "/anime" },
-    { "handle": "router/games.js", "src": "/games" },
-    { "handle": "router/pinterest.js", "src": "/pinterest" }
+    { "src": "/anime", "dest": "router/anime.js" },
+    { "src": "/games", "dest": "router/games.js" },
+    { "src": "/pinterest", "dest": "router/pinterest.js" },
+    { "src": "/(.*)", "dest": "router/default.js" }
   ]
 }
