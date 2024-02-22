@@ -3,7 +3,7 @@ const path = require('path');
 const fs = require('fs');
 
 const app = express();
-const port = 8080;
+const port = 6701;
 
 // Inisialisasi total hits
 let totalHits = 0;
