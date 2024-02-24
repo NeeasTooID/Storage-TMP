@@ -38,7 +38,7 @@ app.use((req, res, next) => {
 
 // Mengalihkan semua permintaan yang tidak cocok dengan file statis ke halaman beranda (index.html)
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'error404.html'));
 });
 
 // Jalankan server
