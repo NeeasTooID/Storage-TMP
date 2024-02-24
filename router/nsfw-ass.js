@@ -5,7 +5,7 @@ const request = require('request');
 const path = require('path');
 
 router.get('/', (req, res) => {
-    const dataFilePath = path.join(__dirname, '..', 'apijson', 'nsfw', 'nsfw-ass.json');
+    const dataFilePath = path.join(__dirname, '../apijson', 'nsfw', 'ass.json');
     try {
         const rawData = fs.readFileSync(dataFilePath);
         const data = JSON.parse(rawData);
