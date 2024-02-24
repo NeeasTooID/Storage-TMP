@@ -19,12 +19,12 @@ h2, h3 {
     color: #ffffff;
 }
 
-.menu-list {
+.menu-table {
     list-style-type: none;
     padding: 0;
 }
 
-.menu-list li {
+.menu-table tr {
     margin-bottom: 5px;
     font-size: 18px;
 }
@@ -55,7 +55,7 @@ h2, h3 {
         padding-top: 1px;
     }
     
-    .menu-list li {
+    .menu-table tr {
         font-size: 16px;
     }
 }
