@@ -1,17 +1,20 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { join } from 'path';
-import { promises as fs } from 'fs';
+import fetch from 'node-fetch';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    const filePath = join(process.cwd(), 'src/json/anime/waifu.json');
-    const fileContents = await fs.readFile(filePath, 'utf8');
-    const urls: string[] = JSON.parse(fileContents);
+    // Panggil API untuk mendapatkan data gambar
+    const response = await fetch('https://api.waifu.im/search?included_tags=waifu');
+    const data = await response.json();
 
-    // Ambil secara acak satu URL
-    const randomUrl = urls[Math.floor(Math.random() * urls.length)];
+    // Ambil URL gambar pertama dari respons API
+    const imageUrl = data.images[0]?.url;
 
-    // Generate HTML response with a single image
+    if (!imageUrl) {
+      throw new Error('Failed to get image URL');
+    }
+
+    // Generate HTML response with image and JSON
     const htmlContent = `
       <!DOCTYPE html>
       <html lang="en">
@@ -23,11 +26,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           body {
             font-family: Arial, sans-serif;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: env(safe-area-inset-top);
+            padding: 20px;
           }
           img {
             max-width: 90%;
@@ -35,11 +36,22 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             border: 2px solid #ccc;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+          }
+          pre {
+            max-width: 90%;
+            overflow-x: auto;
+            padding: 10px;
+            background-color: #f4f4f4;
+            border-radius: 10px;
           }
         </style>
       </head>
       <body>
-        <img src="${randomUrl}" alt="Waifu Image">
+        <h1>Waifu Image</h1>
+        <img src="${imageUrl}" alt="Waifu Image">
+        <h2>JSON API</h2>
+        <pre>${JSON.stringify(data, null, 2)}</pre>
       </body>
       </html>
     `;
