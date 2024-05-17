@@ -27,6 +27,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             align-items: center;
             height: 100vh;
             margin: 0;
+            background-color: env(safe-area-inset-top);
           }
           img {
             max-width: 90%;
