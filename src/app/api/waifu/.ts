@@ -1,3 +1,4 @@
+// pages/api/waifu.ts
 import { NextApiRequest, NextApiResponse } from 'next';
 import { join } from 'path';
 import { promises as fs } from 'fs';
