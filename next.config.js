@@ -1,4 +1,3 @@
-// next.config.js
 module.exports = {
   publicRuntimeConfig: {
     apiEndpoints: [
@@ -28,10 +27,6 @@ module.exports = {
   "name": "New Item",
   "description": "Description of new item"
 }'`,
-        requestBody: `{
-  "name": "New Item",
-  "description": "Description of new item"
-}`,
         response: `{
   "id": 3,
   "name": "New Item",
