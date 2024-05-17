@@ -1,11 +1,42 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import fetch from 'node-fetch';
 
+interface WaifuImage {
+  signature: string;
+  extension: string;
+  image_id: number;
+  favorites: number;
+  dominant_color: string;
+  source: string;
+  artist: {
+    artist_id: number;
+    name: string;
+    patreon: string | null;
+    pixiv: string;
+    twitter: string;
+    deviant_art: string | null;
+  };
+  uploaded_at: string;
+  liked_at: string | null;
+  is_nsfw: boolean;
+  width: number;
+  height: number;
+  byte_size: number;
+  url: string;
+  preview_url: string;
+  tags: {
+    tag_id: number;
+    name: string;
+    description: string;
+    is_nsfw: boolean;
+  }[];
+}
+
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     // Panggil API untuk mendapatkan data gambar
     const response = await fetch('https://api.waifu.im/search?included_tags=waifu');
-    const data = await response.json();
+    const data: { images: WaifuImage[] } = await response.json();
 
     // Ambil URL gambar pertama dari respons API
     const imageUrl = data.images[0]?.url;
@@ -26,9 +57,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           body {
             font-family: Arial, sans-serif;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            padding: 20px;
+            height: 100vh;
+            margin: 0;
+            background-color: env(safe-area-inset-top);
           }
           img {
             max-width: 90%;
@@ -36,22 +69,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             border: 2px solid #ccc;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-          }
-          pre {
-            max-width: 90%;
-            overflow-x: auto;
-            padding: 10px;
-            background-color: #f4f4f4;
-            border-radius: 10px;
           }
         </style>
       </head>
       <body>
-        <h1>Waifu Image</h1>
         <img src="${imageUrl}" alt="Waifu Image">
-        <h2>JSON API</h2>
-        <pre>${JSON.stringify(data, null, 2)}</pre>
       </body>
       </html>
     `;
