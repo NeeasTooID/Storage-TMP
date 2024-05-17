@@ -41,6 +41,7 @@ pre {
   padding: 10px;
   border-radius: 5px;
   overflow-x: auto;
+  white-space: pre-wrap;
 }
 
 code {
@@ -63,6 +64,27 @@ div {
 /* Section styles */
 section {
   margin-bottom: 40px;
+}
+
+/* Endpoint styles */
+div > div {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+}
+
+div > div h3 {
+  color: #007bff;
+}
+
+div > div pre {
+  background-color: #f5f5f5;
+}
+
+div > div h4 {
+  margin-top: 10px;
 }
 
 /* Link styles */
