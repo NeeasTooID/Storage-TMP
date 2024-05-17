@@ -12,7 +12,7 @@
 
 ### About
 - 👤 Created By NeastooID
-- 💌 Since 19 Jan 2024
-- 👨‍💻 Made With Tender Heart 
+- 💌 Since 19 Jan 2022
+- 👨‍💻 Still under development
 
 ------
