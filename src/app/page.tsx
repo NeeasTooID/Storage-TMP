@@ -5,6 +5,21 @@ const Page: React.FC = () => {
   const { publicRuntimeConfig } = getConfig();
   const { apiEndpoints } = publicRuntimeConfig;
 
+  if (!apiEndpoints || !Array.isArray(apiEndpoints) || apiEndpoints.length === 0) {
+    return (
+      <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
+        <h1>API Documentation</h1>
+        <section>
+          <h2>Overview</h2>
+          <p>This documentation provides an overview of the available API endpoints.</p>
+        </section>
+        <section>
+          <p>No API endpoints configured.</p>
+        </section>
+      </div>
+    );
+  }
+
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
       <h1>API Documentation</h1>
