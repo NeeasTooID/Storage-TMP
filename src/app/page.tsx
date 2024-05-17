@@ -1,6 +1,10 @@
 import React from 'react';
+import getConfig from 'next/config';
 
 const Page: React.FC = () => {
+  const { publicRuntimeConfig } = getConfig();
+  const { apiEndpoints } = publicRuntimeConfig;
+
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
       <h1>API Documentation</h1>
@@ -11,65 +15,33 @@ const Page: React.FC = () => {
 
       <section>
         <h2>Endpoints</h2>
-
-        <div>
-          <h3>GET /api/items</h3>
-          <p>Fetches a list of items.</p>
-          <pre>
-            <code>
-              {`curl -X GET https://api.example.com/api/items`}
-            </code>
-          </pre>
-          <h4>Response</h4>
-          <pre>
-            <code>
-              {`[
-  {
-    "id": 1,
-    "name": "Item 1",
-    "description": "Description of item 1"
-  },
-  {
-    "id": 2,
-    "name": "Item 2",
-    "description": "Description of item 2"
-  }
-]`}
-            </code>
-          </pre>
-        </div>
-
-        <div>
-          <h3>POST /api/items</h3>
-          <p>Creates a new item.</p>
-          <pre>
-            <code>
-              {`curl -X POST https://api.example.com/api/items -H "Content-Type: application/json" -d '{
-  "name": "New Item",
-  "description": "Description of new item"
-}'`}
-            </code>
-          </pre>
-          <h4>Request Body</h4>
-          <pre>
-            <code>
-              {`{
-  "name": "New Item",
-  "description": "Description of new item"
-}`}
-            </code>
-          </pre>
-          <h4>Response</h4>
-          <pre>
-            <code>
-              {`{
-  "id": 3,
-  "name": "New Item",
-  "description": "Description of new item"
-}`}
-            </code>
-          </pre>
-        </div>
+        {apiEndpoints.map((endpoint: any, index: number) => (
+          <div key={index} style={{ marginBottom: '20px' }}>
+            <h3>{endpoint.method} {endpoint.path}</h3>
+            <p>{endpoint.description}</p>
+            <pre>
+              <code>
+                {endpoint.curl}
+              </code>
+            </pre>
+            {endpoint.requestBody && (
+              <>
+                <h4>Request Body</h4>
+                <pre>
+                  <code>
+                    {endpoint.requestBody}
+                  </code>
+                </pre>
+              </>
+            )}
+            <h4>Response</h4>
+            <pre>
+              <code>
+                {endpoint.response}
+              </code>
+            </pre>
+          </div>
+        ))}
       </section>
     </div>
   );
