@@ -7,7 +7,7 @@
 
 <h1 align="center">Example of Website Display</h1>
 <p align="center">
-  <img src="https://raw.githubusercontent.com/NeeasTooID/Static-HTML/main/media/Screenshot_20240222_054316_Chrome.png" width=700 />
+  <img src="https://raw.githubusercontent.com/NeeasTooID/Static-HTML/main/src/media/f0eebf34ac0df72c60ea749a68a6b17c.jpg" width=700 />
 </p>
 
 ### About
