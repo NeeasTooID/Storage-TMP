@@ -16,6 +16,9 @@ const Page: React.FC = () => {
         <section>
           <p>No API endpoints configured.</p>
         </section>
+        <footer style={{ marginTop: '20px', borderTop: '1px solid #ccc', paddingTop: '10px' }}>
+          <p>&copy; {new Date().getFullYear()} Created by Yusupkakuu</p>
+        </footer>
       </div>
     );
   }
@@ -58,6 +61,9 @@ const Page: React.FC = () => {
           </div>
         ))}
       </section>
+      <footer style={{ marginTop: '20px', borderTop: '1px solid #ccc', paddingTop: '10px' }}>
+        <p>&copy; {new Date().getFullYear()} Created by Yusupkakuu</p>
+      </footer>
     </div>
   );
 };
