@@ -8,27 +8,29 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const fileContents = await fs.readFile(filePath, 'utf8');
     const urls: string[] = JSON.parse(fileContents);
 
-    // Shuffle the URLs array
-    const shuffledUrls = urls.sort(() => 0.5 - Math.random());
+    // Ambil secara acak satu URL
+    const randomUrl = urls[Math.floor(Math.random() * urls.length)];
 
-    // Generate HTML response with images
+    // Generate HTML response with a single image
     const htmlContent = `
       <!DOCTYPE html>
       <html lang="en">
       <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Waifu Images</title>
+        <title>Waifu Image</title>
         <style>
           body {
             font-family: Arial, sans-serif;
             display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            padding: 20px;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
           }
           img {
-            max-width: 300px;
+            max-width: 90%;
+            max-height: 90%;
             border: 2px solid #ccc;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -36,7 +38,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         </style>
       </head>
       <body>
-        ${shuffledUrls.map(url => `<img src="${url}" alt="Waifu Image">`).join('')}
+        <img src="${randomUrl}" alt="Waifu Image">
       </body>
       </html>
     `;
