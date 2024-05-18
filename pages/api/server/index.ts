@@ -6,7 +6,7 @@ import { sql } from "@vercel/postgres"; // Modul untuk mengakses database Postgr
 const getCpuUsage = async () => {
   try {
     const cpuData = await si.currentLoad();
-    return cpuData.currentload;
+    return cpuData.currentLoad; // Properti yang benar adalah currentLoad
   } catch (error) {
     console.error('Error fetching CPU usage:', error);
     return null;
