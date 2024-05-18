@@ -12,7 +12,7 @@ const apiEndpoints = [
   {
     method: 'GET',
     path: '/api/maid',
-    description: 'Example response:\n{ "serverTime": "01:57:10 AM", "totalRequestsToday": 100, "ramUsage": "20.00%", "cpuUsage": "15.00%" }',
+    description: 'Example response:\n{ "url": "https://cdn.waifu.im/7347.jpg" }',
     requestBody: null,
   },
 ];
