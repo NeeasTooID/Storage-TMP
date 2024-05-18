@@ -12,7 +12,7 @@ const apiEndpoints = [
   {
     method: 'GET',
     path: '/api/server',
-    description: 'Fetches server data.\nExample response:\n{ "serverTime": "01:57:10 AM", "totalRequestsToday": 100, "ramUsage": "20.00%", "cpuUsage": "15.00%" }',
+    description: 'Fetches server data from https://sh.zanixon.xyz/api/server.\nExample response:\n{ "serverTime": "01:57:10 AM", "totalRequestsToday": 100, "ramUsage": "20.00%", "cpuUsage": "15.00%" }',
     requestBody: null,
   },
 ];
@@ -28,7 +28,7 @@ const Page = () => {
   useEffect(() => {
     const fetchServerData = async () => {
       try {
-        const response = await fetch('/api/server');
+        const response = await fetch('https://sh.zanixon.xyz/api/server');
         const data = await response.json();
         setServerData(data);
       } catch (error) {
@@ -37,6 +37,7 @@ const Page = () => {
     };
 
     fetchServerData();
+    const interval = setInterval(fetchServerData, 1000); // Update every second
 
     const script = document.createElement('script');
     script.src = 'https://https-sh-zanixon-xyz.disqus.com/embed.js';
@@ -46,6 +47,7 @@ const Page = () => {
     document.head.appendChild(script);
 
     return () => {
+      clearInterval(interval); // Clear the interval when component unmounts
       document.head.removeChild(script);
     };
   }, []);
@@ -107,7 +109,7 @@ const Page = () => {
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              (function() {
+              (function() { // DON'T EDIT BELOW THIS LINE
                 var d = document, s = d.createElement('script');
                 s.src = 'https://https-sh-zanixon-xyz.disqus.com/embed.js';
                 s.setAttribute('data-timestamp', +new Date());
