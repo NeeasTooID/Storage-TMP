@@ -5,7 +5,7 @@ const apiEndpoints = [
   {
     method: 'GET',
     path: '/api/waifu',
-    description: 'Fetches waifu data.\nExample response:\n{ "waifuName": "Linucx Chan>3", "anime": "I'm Not Ready To Do It UwU" }',
+    description: 'Fetches waifu data.\nExample response:\n{ "waifuName": "Linucx Chan>3", "anime": "I\'m Not Ready To Do It UwU" }',
     requestBody: null,
   },
 ];
