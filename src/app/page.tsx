@@ -18,25 +18,26 @@ const Page: React.FC = () => {
   };
 
   useEffect(() => {
-    const disqusConfig = () => {
-      window.disqus_config = function () {
-        this.page.url = window.location.href;
-        this.page.identifier = "unique_page_id"; // Ganti dengan identifier unik untuk setiap halaman
-      };
+  const postId = "post123"; // Ganti dengan ID unik untuk halaman ini
+  const disqusConfig = () => {
+    window.disqus_config = function () {
+      (this as any).page.url = window.location.href;
+      (this as any).page.identifier = postId; // Gunakan ID posting sebagai unique_page_id
     };
+  };
 
-    const script = document.createElement('script');
-    script.src = 'https://https-sh-zanixon-xyz.disqus.com/embed.js';
-    script.setAttribute('data-timestamp', String(new Date()));
-    script.async = true;
-    script.onload = disqusConfig;
+  const script = document.createElement('script');
+  script.src = 'https://https-sh-zanixon-xyz.disqus.com/embed.js';
+  script.setAttribute('data-timestamp', String(new Date()));
+  script.async = true;
+  script.onload = disqusConfig;
 
-    document.body.appendChild(script);
+  document.body.appendChild(script);
 
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
+  return () => {
+    document.body.removeChild(script);
+  };
+}, []);
 
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
