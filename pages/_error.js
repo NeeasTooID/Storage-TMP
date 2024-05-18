@@ -1,21 +1,22 @@
 import React from 'react';
+import { NextPageContext } from 'next';
 
-class ErrorPage extends React.Component {
-  static getInitialProps({ res, err }) {
-    const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
-    return { statusCode };
-  }
+type PageNotFoundProps = {
+  statusCode: number;
+};
 
-  render() {
-    const { statusCode } = this.props;
+const PageNotFound: React.FC<PageNotFoundProps> = ({ statusCode }) => {
+  return (
+    <div>
+      <h1>Halaman tidak ditemukan</h1>
+      <p>{statusCode ? `Kode status: ${statusCode}` : 'Terjadi kesalahan.'}</p>
+    </div>
+  );
+};
 
-    return (
-      <div>
-        <h1>{statusCode}</h1>
-        <p>{statusCode === 404 ? 'Halaman tidak ditemukan' : 'Terjadi kesalahan.'}</p>
-      </div>
-    );
-  }
-}
+PageNotFound.getInitialProps = ({ res, err }: NextPageContext) => {
+  const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
+  return { statusCode };
+};
 
-export default ErrorPage;
+export default PageNotFound;
