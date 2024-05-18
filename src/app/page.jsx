@@ -31,6 +31,7 @@ const Page = () => {
   }, []);
 
   return (
+    <Analytics />
     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
       <h2>Docs ID ( Indonesia )</h2>
       <section>
