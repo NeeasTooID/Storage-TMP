@@ -10,9 +10,12 @@ const PageNotFound: React.FC = () => {
         <a className="link">Kembali ke Halaman Utama</a>
       </Link>
       <style jsx>{`
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
         .container {
           text-align: center;
           margin-top: 50px;
+          font-family: 'Roboto', sans-serif;
         }
         .heading {
           font-size: 2.5rem;
