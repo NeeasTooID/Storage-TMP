@@ -5,7 +5,7 @@ const apiEndpoints = [
   {
     method: 'GET',
     path: '/api/waifu',
-    description: 'Fetches waifu data. Example response: { "waifuName": "Mai Sakurajima", "anime": "Rascal Does Not Dream of Bunny Girl Senpai" }',
+    description: 'Fetches waifu data.\n\nExample response:\n{ "waifuName": "Mai Sakurajima", "anime": "Rascal Does Not Dream of Bunny Girl Senpai" }',
     requestBody: null,
   },
 ];
@@ -48,7 +48,11 @@ const Page: React.FC = () => {
                   `${endpoint.method} ${endpoint.path}`
                 )}
               </h3>
-              <p>{endpoint.description}</p>
+              <div style={{ backgroundColor: '#f4f4f4', padding: '10px', borderRadius: '5px' }}>
+                <pre>
+                  <code>{endpoint.description}</code>
+                </pre>
+              </div>
               {endpoint.requestBody && (
                 <>
                   <h4>Request Body</h4>
