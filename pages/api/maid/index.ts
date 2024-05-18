@@ -87,7 +87,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             const artistPixiv = image.artist?.pixiv ? `<a href="${image.artist.pixiv}" target="_blank" rel="noopener noreferrer">${artistName}</a>` : artistName;
             return `
               <div class="image-container">
-                <img src="${image.url}" alt="Waifu Image" />
+                <img src="${image.url}" alt="Maid Image" />
                 <p>Artist: ${artistPixiv}</p>
               </div>
             `;
