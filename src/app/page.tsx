@@ -5,7 +5,7 @@ const apiEndpoints = [
   {
     method: 'GET',
     path: '/api/waifu',
-    description: 'Fetches waifu data.\n\nExample response:\n{ "waifuName": "Mai Sakurajima", "anime": "Rascal Does Not Dream of Bunny Girl Senpai" }',
+    description: 'Fetches waifu data.\nExample response:\n{ "waifuName": "Linucx Chan>3", "anime": "I'm Not Ready To Do It UwU" }',
     requestBody: null,
   },
 ];
@@ -21,8 +21,12 @@ const Page: React.FC = () => {
     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
       <h1>API Documentation</h1>
       <section>
-        <h2>Overview</h2>
-        <p>This documentation provides an overview of the available API endpoints.</p>
+        <h2>Docs ID ( Indonesia )</h2>
+        <p>Haloo Semua! Saya Memperkenalkan API Free Dari NeastooID,
+          Project Ini Sebenarnya Sudah Tertinggal Sejak 2022 Dan Baru Di Lanjut Skrg,
+          Project Ini Hanya Iseng Dan Gabut, Hanya Untuk Pembelajaran Saja,
+          Namun Jika Kalain Ingin Memakai Nya Silahkan Dan Yap Yang Paling Penting Ini Free!,
+          Namun Jika Kalian Berkenana Berdonasi Boleh Banget Kok!</p>
       </section>
       {apiEndpoints.length === 0 ? (
         <section>
