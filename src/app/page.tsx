@@ -1,11 +1,11 @@
-"use client"
+"use client";
 import React, { useState } from 'react';
 
 const apiEndpoints = [
   {
     method: 'GET',
     path: '/api/waifu',
-    description: 'Fetches example data',
+    description: 'Fetches waifu data',
     requestBody: null,
     response: null,
   },
@@ -28,6 +28,10 @@ const Page: React.FC = () => {
     }
   };
 
+  const handleNavigate = (endpoint: string) => {
+    window.location.href = endpoint;
+  };
+
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
       <h1>API Documentation</h1>
@@ -45,15 +49,19 @@ const Page: React.FC = () => {
           {apiEndpoints.map((endpoint, index) => (
             <div key={index} style={{ marginBottom: '20px' }}>
               <h3>
-                {endpoint.method === 'GET' && (
-                  <button
-                    onClick={() => handleFetch(endpoint.path)}
-                    style={{ background: 'none', border: 'none', color: 'blue', textDecoration: 'underline', cursor: 'pointer', padding: 0 }}
-                  >
-                    {endpoint.method} {endpoint.path}
-                  </button>
+                {endpoint.method === 'GET' ? (
+                  <>
+                    {endpoint.method} /api/waifu
+                    <button
+                      onClick={() => handleNavigate(endpoint.path)}
+                      style={{ marginLeft: '10px', background: 'none', border: '1px solid blue', color: 'blue', borderRadius: '4px', cursor: 'pointer', padding: '5px 10px' }}
+                    >
+                      Use
+                    </button>
+                  </>
+                ) : (
+                  `${endpoint.method} ${endpoint.path}`
                 )}
-                {endpoint.method !== 'GET' && `${endpoint.method} ${endpoint.path}`}
               </h3>
               <p>{endpoint.description}</p>
               {endpoint.requestBody && (
