@@ -1,4 +1,3 @@
-"use client";
 import React, { useState } from 'react';
 
 const apiEndpoints = [
@@ -45,12 +44,15 @@ const Page: React.FC = () => {
           {apiEndpoints.map((endpoint, index) => (
             <div key={index} style={{ marginBottom: '20px' }}>
               <h3>
-                <button
-                  onClick={() => handleFetch(endpoint.path)}
-                  style={{ background: 'none', border: 'none', color: 'blue', textDecoration: 'underline', cursor: 'pointer', padding: 0 }}
-                >
-                  {endpoint.method} {endpoint.path}
-                </button>
+                {endpoint.method === 'GET' && (
+                  <button
+                    onClick={() => handleFetch(endpoint.path)}
+                    style={{ background: 'none', border: 'none', color: 'blue', textDecoration: 'underline', cursor: 'pointer', padding: 0 }}
+                  >
+                    {endpoint.method} {endpoint.path}
+                  </button>
+                )}
+                {endpoint.method !== 'GET' && `${endpoint.method} ${endpoint.path}`}
               </h3>
               <p>{endpoint.description}</p>
               {endpoint.requestBody && (
