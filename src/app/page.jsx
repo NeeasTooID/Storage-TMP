@@ -6,13 +6,13 @@ const apiEndpoints = [
   {
     method: 'GET',
     path: '/api/waifu',
-    description: 'Fetches waifu data.\nExample response:\n{ "waifuName": "Linucx Chan>3", "anime": "I\'m Not Ready To Do It UwU" }',
+    description: 'Example response:\n{ "waifuName": "Linucx Chan>3", "anime": "I\'m Not Ready To Do It UwU" }',
     requestBody: null,
   },
   {
     method: 'GET',
     path: '/api/maid',
-    description: 'Fetches server data from https://sh.zanixon.xyz/api/server.\nExample response:\n{ "serverTime": "01:57:10 AM", "totalRequestsToday": 100, "ramUsage": "20.00%", "cpuUsage": "15.00%" }',
+    description: 'Example response:\n{ "serverTime": "01:57:10 AM", "totalRequestsToday": 100, "ramUsage": "20.00%", "cpuUsage": "15.00%" }',
     requestBody: null,
   },
 ];
