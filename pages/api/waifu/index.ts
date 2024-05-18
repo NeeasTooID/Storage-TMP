@@ -29,7 +29,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           ${data.images.map((waifu: any) => `
             <div class="image-container">
               <img src="${waifu.url}" alt="Waifu Image" />
-              <p>Artist: <a href="${waifu.artist.url}" target="_blank" rel="noopener noreferrer">${waifu.artist.name}</a></p>
+              <p>Artist: <a href="${waifu.artist.pixiv}" target="_blank" rel="noopener noreferrer">${waifu.artist.name}</a></p>
             </div>
           `).join('')}
         </div>
