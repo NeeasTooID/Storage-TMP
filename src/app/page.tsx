@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 const apiEndpoints = [
   {
     method: 'GET',
-    path: '/api/example',
+    path: '/api/waifu',
     description: 'Fetches example data',
     requestBody: null,
     response: null,
