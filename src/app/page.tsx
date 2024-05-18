@@ -19,7 +19,6 @@ const Page: React.FC = () => {
 
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
-      <h1>API Documentation</h1>
       <section>
         <h2>Docs ID ( Indonesia )</h2>
         <p>Haloo Semua! Saya Memperkenalkan API Free Dari NeastooID,
