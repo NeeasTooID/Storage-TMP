@@ -1,40 +1,61 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 
-const ImageComponent: React.FC = () => {
-  const [imageUrl, setImageUrl] = useState<string | null>(null);
-  const [jsonData, setJsonData] = useState<any | null>(null);
+interface WaifuImage {
+  url: string;
+  source: string;
+  artist: {
+    name: string;
+    url: string;
+  };
+}
+
+const WaifuFetcher: React.FC = () => {
+  const [waifus, setWaifus] = useState<WaifuImage[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchWaifus = async () => {
       try {
-        const response = await axios.get('https://api.waifu.im/search?included_tags=waifu');
-        const data = response.data;
-        // Memastikan bahwa respons memiliki properti 'files' dan tidak kosong
-        if (data.files && data.files.length > 0) {
-          setImageUrl(data.files[0].url);
-          setJsonData(data); // Menyimpan seluruh data JSON
-        } else {
-          console.log('Tidak ada gambar yang ditemukan');
+        const response = await fetch('https://api.waifu.im/search?included_tags=waifu');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
         }
+        const data = await response.json();
+        setWaifus(data.images);
+        setLoading(false);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        setError((error as Error).message);
+        setLoading(false);
       }
     };
 
-    fetchData();
+    fetchWaifus();
   }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <div>
-      {imageUrl && (
-        <img src={imageUrl} alt="Waifu" style={{ maxWidth: '100%', height: 'auto' }} />
-      )}
-      {jsonData && (
-        <pre>{JSON.stringify(jsonData, null, 2)}</pre>
-      )}
+      <h1>Waifu Images</h1>
+      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+        {waifus.map((waifu, index) => (
+          <div key={index} style={{ margin: '10px' }}>
+            <img src={waifu.url} alt={`Waifu ${index + 1}`} style={{ width: '200px', height: 'auto' }} />
+            <p>
+              Artist: <a href={waifu.artist.url} target="_blank" rel="noopener noreferrer">{waifu.artist.name}</a>
+            </p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
 
-export default ImageComponent;
+export default WaifuFetcher;
