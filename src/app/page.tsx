@@ -12,18 +12,18 @@ const apiEndpoints = [
 ];
 
 const Page: React.FC = () => {
-  const [response, setResponse] = useState('');
+  const [description, setDescription] = useState('');
 
   const handleFetch = async (endpoint: string) => {
     try {
       const res = await fetch(endpoint);
       const data = await res.json();
-      setResponse(JSON.stringify(data, null, 2));
+      setDescription(JSON.stringify(data, null, 2));
     } catch (error) {
       if (error instanceof Error) {
-        setResponse(`Error: ${error.message}`);
+        setDescription(`Error: ${error.message}`);
       } else {
-        setResponse('An unknown error occurred');
+        setDescription('An unknown error occurred');
       }
     }
   };
@@ -72,9 +72,9 @@ const Page: React.FC = () => {
                   </pre>
                 </>
               )}
-              <h4>Response</h4>
+              <h4>Description</h4>
               <pre>
-                <code>{response}</code>
+                <code>{description}</code>
               </pre>
             </div>
           ))}
