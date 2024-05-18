@@ -19,8 +19,8 @@ const Page: React.FC = () => {
 
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
+      <h2>Docs ID ( Indonesia )</h2>
       <section>
-        <h2>Docs ID ( Indonesia )</h2>
         <p>Haloo Semua! Saya Memperkenalkan API Free Dari NeastooID,
           Project Ini Sebenarnya Sudah Tertinggal Sejak 2022 Dan Baru Di Lanjut Skrg,
           Project Ini Hanya Iseng Dan Gabut, Hanya Untuk Pembelajaran Saja,
