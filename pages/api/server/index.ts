@@ -1,7 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import si from 'systeminformation'; // Modul untuk memperoleh informasi sistem
-import fs from 'fs';
-import path from 'path';
 
 // Fungsi untuk mendapatkan informasi penggunaan CPU
 const getCpuUsage = async () => {
@@ -25,28 +23,6 @@ const getRamUsage = async () => {
   }
 };
 
-// Fungsi untuk mendapatkan jumlah total permintaan hari ini dari file JSON
-const getTotalRequestsToday = async () => {
-  try {
-    const dataFilePath = path.resolve(process.cwd(), 'src/json/data.json');
-    const data = JSON.parse(fs.readFileSync(dataFilePath, 'utf-8'));
-    const today = new Date().toISOString().split('T')[0];
-
-    if (!data[today]) {
-      data[today] = 0;
-    }
-
-    data[today] += 1;
-
-    fs.writeFileSync(dataFilePath, JSON.stringify(data, null, 2));
-
-    return data[today];
-  } catch (error) {
-    console.error('Error fetching total requests:', error);
-    return null;
-  }
-};
-
 // Fungsi untuk mendapatkan waktu server dalam format 12 jam (AM/PM)
 const getServerTime = () => {
   const now = new Date();
@@ -63,17 +39,15 @@ const getServerTime = () => {
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     // Mendapatkan informasi dari berbagai sumber
-    const [cpuUsage, ramUsage, totalRequestsToday, serverTime] = await Promise.all([
+    const [cpuUsage, ramUsage, serverTime] = await Promise.all([
       getCpuUsage(),
       getRamUsage(),
-      getTotalRequestsToday(),
       getServerTime(),
     ]);
 
     // Menyusun data respons
     const responseData = {
       serverTime,
-      totalRequestsToday,
       ramUsage: `${ramUsage?.toFixed(2)}%`, // Konversi ke persentase dengan 2 desimal
       cpuUsage: `${cpuUsage?.toFixed(2)}%`, // Konversi ke persentase dengan 2 desimal
     };
