@@ -4,16 +4,34 @@ import { Analytics } from '@vercel/analytics/react';
 
 const apiEndpoints = [
   {
-    method: 'GET',
-    path: '/api/waifu',
-    description: 'Example response:\n{ "waifuName": "Linucx Chan>3", "anime": "I\'m Not Ready To Do It UwU" }',
-    requestBody: null,
+    category: 'Anime',
+    endpoints: [
+      {
+        method: 'GET',
+        path: '/api/waifu',
+        description: 'Example response:\n{ "waifuName": "Linucx Chan>3", "anime": "I\'m Not Ready To Do It UwU" }',
+      },
+      {
+        method: 'GET',
+        path: '/api/maid',
+        description: 'Example response:\n{ "url": "https://cdn.waifu.im/7347.jpg" }',
+      },
+    ],
   },
   {
-    method: 'GET',
-    path: '/api/maid',
-    description: 'Example response:\n{ "url": "https://cdn.waifu.im/7347.jpg" }',
-    requestBody: null,
+    category: 'Uploader',
+    endpoints: [
+      {
+        method: 'POST',
+        path: '/api/upload/image',
+        description: 'Uploads an image.\nExample response:\n{ "url": "https://example.com/image.jpg" }',
+      },
+      {
+        method: 'POST',
+        path: '/api/upload/video',
+        description: 'Uploads a video.\nExample response:\n{ "url": "https://example.com/video.mp4" }',
+      },
+    ],
   },
 ];
 
@@ -69,41 +87,35 @@ const Page = () => {
             <p>No API endpoints configured.</p>
           </section>
         ) : (
-          <section>
-            <h2>Endpoints</h2>
-            {apiEndpoints.map((endpoint, index) => (
-              <div key={index} style={{ marginBottom: '20px' }}>
-                <h3>
-                  {endpoint.method === 'GET' ? (
-                    <>
-                      {endpoint.method} {endpoint.path}
-                      <button
-                        onClick={() => handleNavigate(endpoint.path)}
-                        style={{ marginLeft: '10px', background: 'none', border: '1px solid blue', color: 'blue', borderRadius: '4px', cursor: 'pointer', padding: '5px 10px' }}
-                      >
-                        Use
-                      </button>
-                    </>
-                  ) : (
-                    `${endpoint.method} ${endpoint.path}`
-                  )}
-                </h3>
-                <div style={{ backgroundColor: '#f4f4f4', padding: '10px', borderRadius: '5px' }}>
-                  <pre>
-                    <code>{endpoint.description}</code>
-                  </pre>
-                </div>
-                {endpoint.requestBody && (
-                  <>
-                    <h4>Request Body</h4>
+          apiEndpoints.map((category, catIndex) => (
+            <section key={catIndex}>
+              <h2>{category.category} Endpoints</h2>
+              {category.endpoints.map((endpoint, index) => (
+                <div key={index} style={{ marginBottom: '20px' }}>
+                  <h3>
+                    {endpoint.method === 'GET' || endpoint.method === 'POST' ? (
+                      <>
+                        {endpoint.method} {endpoint.path}
+                        <button
+                          onClick={() => handleNavigate(endpoint.path)}
+                          style={{ marginLeft: '10px', background: 'none', border: '1px solid blue', color: 'blue', borderRadius: '4px', cursor: 'pointer', padding: '5px 10px' }}
+                        >
+                          Use
+                        </button>
+                      </>
+                    ) : (
+                      `${endpoint.method} ${endpoint.path}`
+                    )}
+                  </h3>
+                  <div style={{ backgroundColor: '#f4f4f4', padding: '10px', borderRadius: '5px' }}>
                     <pre>
-                      <code>{endpoint.requestBody}</code>
+                      <code>{endpoint.description}</code>
                     </pre>
-                  </>
-                )}
-              </div>
-            ))}
-          </section>
+                  </div>
+                </div>
+              ))}
+            </section>
+          ))
         )}
         <div id="disqus_thread"></div>
         <script
