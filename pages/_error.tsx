@@ -1,5 +1,5 @@
 import React from 'react';
-import { NextPageContext } from 'next';
+import { NextPageContext, GetServerSideProps } from 'next';
 
 type PageNotFoundProps = {
   statusCode: number;
@@ -14,9 +14,9 @@ const PageNotFound: React.FC<PageNotFoundProps> = ({ statusCode }) => {
   );
 };
 
-PageNotFound.getInitialProps = ({ res, err }: NextPageContext) => {
+export const getServerSideProps: GetServerSideProps<PageNotFoundProps> = async ({ res, err }: NextPageContext) => {
   const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
-  return { statusCode };
+  return { props: { statusCode } };
 };
 
 export default PageNotFound;
