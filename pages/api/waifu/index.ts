@@ -20,16 +20,16 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           .container { display: flex; flex-wrap: wrap; }
           .image-container { margin: 10px; }
           .image-container img { width: 200px; height: auto; }
-          pre { background: #f4f4f4; padding: 10px; border-radius: 5px; }
+          pre { background: #f4f4f4; padding: 10px; border-radius: 5px; white-space: pre-wrap; word-wrap: break-word; }
         </style>
       </head>
       <body>
         <h1>Waifu Images</h1>
         <div class="container">
-          ${data.images.map((waifu: any) => `
+          ${data.images.map((image: any) => `
             <div class="image-container">
-              <img src="${waifu.url}" alt="Waifu Image" />
-              <p>Artist: <a href="${waifu.artist.pixiv}" target="_blank" rel="noopener noreferrer">${waifu.artist.name}</a></p>
+              <img src="${image.url}" alt="Waifu Image" />
+              <p>Artist: <a href="${image.artist.pixiv}" target="_blank" rel="noopener noreferrer">${image.artist.name}</a></p>
             </div>
           `).join('')}
         </div>
