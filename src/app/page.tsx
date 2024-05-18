@@ -5,28 +5,13 @@ const apiEndpoints = [
   {
     method: 'GET',
     path: '/api/waifu',
-    description: 'Fetches waifu data',
+    description: 'Fetches waifu data. Example response: { "waifuName": "Mai Sakurajima", "anime": "Rascal Does Not Dream of Bunny Girl Senpai" }',
     requestBody: null,
-    response: null,
   },
 ];
 
 const Page: React.FC = () => {
   const [description, setDescription] = useState('');
-
-  const handleFetch = async (endpoint: string) => {
-    try {
-      const res = await fetch(endpoint);
-      const data = await res.json();
-      setDescription(JSON.stringify(data, null, 2));
-    } catch (error) {
-      if (error instanceof Error) {
-        setDescription(`Error: ${error.message}`);
-      } else {
-        setDescription('An unknown error occurred');
-      }
-    }
-  };
 
   const handleNavigate = (endpoint: string) => {
     window.location.href = endpoint;
@@ -72,10 +57,6 @@ const Page: React.FC = () => {
                   </pre>
                 </>
               )}
-              <h4>Description</h4>
-              <pre>
-                <code>{description}</code>
-              </pre>
             </div>
           ))}
         </section>
