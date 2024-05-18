@@ -9,16 +9,35 @@ const apiEndpoints = [
     description: 'Fetches waifu data.\nExample response:\n{ "waifuName": "Linucx Chan>3", "anime": "I\'m Not Ready To Do It UwU" }',
     requestBody: null,
   },
+  {
+    method: 'GET',
+    path: '/api/server',
+    description: 'Fetches server data.\nExample response:\n{ "serverTime": "01:57:10 AM", "totalRequestsToday": 100, "ramUsage": "20.00%", "cpuUsage": "15.00%" }',
+    requestBody: null,
+  },
 ];
 
 const Page = () => {
   const [description, setDescription] = useState('');
+  const [serverData, setServerData] = useState(null);
 
   const handleNavigate = (endpoint) => {
     window.location.href = endpoint;
   };
 
   useEffect(() => {
+    const fetchServerData = async () => {
+      try {
+        const response = await fetch('/api/server');
+        const data = await response.json();
+        setServerData(data);
+      } catch (error) {
+        console.error('Error fetching server data:', error);
+      }
+    };
+
+    fetchServerData();
+
     const script = document.createElement('script');
     script.src = 'https://https-sh-zanixon-xyz.disqus.com/embed.js';
     script.setAttribute('data-timestamp', String(new Date()));
@@ -40,8 +59,8 @@ const Page = () => {
           <p>Haloo Semua! Saya Memperkenalkan API Free Dari NeastooID,
             Project Ini Sebenarnya Sudah Tertinggal Sejak 2022 Dan Baru Di Lanjut Skrg,
             Project Ini Hanya Iseng Dan Gabut, Hanya Untuk Pembelajaran Saja,
-            Namun Jika Kalain Ingin Memakai Nya Silahkan Dan Yap Yang Paling Penting Ini Free!,
-            Namun Jika Kalian Berkenana Berdonasi Boleh Banget Kok!</p>
+            Namun Jika Kalian Ingin Memakai Nya Silahkan Dan Yap Yang Paling Penting Ini Free!,
+            Namun Jika Kalian Berkenan Berdonasi Boleh Banget Kok!</p>
         </section>
         {apiEndpoints.length === 0 ? (
           <section>
@@ -55,7 +74,7 @@ const Page = () => {
                 <h3>
                   {endpoint.method === 'GET' ? (
                     <>
-                      {endpoint.method} /api/waifu
+                      {endpoint.method} {endpoint.path}
                       <button
                         onClick={() => handleNavigate(endpoint.path)}
                         style={{ marginLeft: '10px', background: 'none', border: '1px solid blue', color: 'blue', borderRadius: '4px', cursor: 'pointer', padding: '5px 10px' }}
@@ -97,6 +116,18 @@ const Page = () => {
             `,
           }}
         />
+        <section>
+          <h2>Console</h2>
+          <div>
+            {serverData ? (
+              <pre>
+                <code>{JSON.stringify(serverData, null, 2)}</code>
+              </pre>
+            ) : (
+              <p>Loading server data...</p>
+            )}
+          </div>
+        </section>
         <footer style={{ marginTop: '20px', borderTop: '1px solid #ccc', paddingTop: '10px' }}>
           <p>&copy; {new Date().getFullYear()} Created by Yusupkakuu</p>
         </footer>
