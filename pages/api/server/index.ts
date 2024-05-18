@@ -1,6 +1,6 @@
-// pages/api/server.ts
 import { NextApiRequest, NextApiResponse } from 'next';
 import si from 'systeminformation'; // Modul untuk memperoleh informasi sistem
+import { sql } from "@vercel/postgres"; // Modul untuk mengakses database Postgres
 
 // Fungsi untuk mendapatkan informasi penggunaan CPU
 const getCpuUsage = async () => {
@@ -24,12 +24,16 @@ const getRamUsage = async () => {
   }
 };
 
-// Fungsi untuk mendapatkan jumlah total permintaan hari ini (misalnya dari database)
+// Fungsi untuk mendapatkan jumlah total permintaan hari ini dari database
 const getTotalRequestsToday = async () => {
   try {
-    // Di sini Anda dapat menggunakan logika untuk mendapatkan jumlah permintaan dari database
-    // Misalnya, menggunakan kueri ke database untuk menghitung jumlah permintaan hari ini
-    return 100; // Contoh angka total permintaan
+    const today = new Date().toISOString().split('T')[0];
+    const { rows } = await sql`
+      SELECT COUNT(*) AS total_requests 
+      FROM requests 
+      WHERE date_trunc('day', timestamp_column) = ${today}
+    `;
+    return parseInt(rows[0].total_requests);
   } catch (error) {
     console.error('Error fetching total requests:', error);
     return null;
