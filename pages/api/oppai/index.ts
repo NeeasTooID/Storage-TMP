@@ -80,7 +80,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         </style>
       </head>
       <body>
-        <h1>Opai Generator V1</h1>
+        <h1>Oppai Generator V1</h1>
         <div class="container">
           ${data.images.map((image: any) => {
             const artistName = image.artist?.name || 'Not Found';
