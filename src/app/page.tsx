@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const apiEndpoints = [
   {
@@ -16,6 +16,27 @@ const Page: React.FC = () => {
   const handleNavigate = (endpoint: string) => {
     window.location.href = endpoint;
   };
+
+  useEffect(() => {
+    const disqusConfig = () => {
+      window.disqus_config = function () {
+        this.page.url = window.location.href;
+        this.page.identifier = "unique_page_id"; // Ganti dengan identifier unik untuk setiap halaman
+      };
+    };
+
+    const script = document.createElement('script');
+    script.src = 'https://https-sh-zanixon-xyz.disqus.com/embed.js';
+    script.setAttribute('data-timestamp', String(new Date()));
+    script.async = true;
+    script.onload = disqusConfig;
+
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
@@ -69,16 +90,6 @@ const Page: React.FC = () => {
         </section>
       )}
       <div id="disqus_thread"></div>
-      <script>
-        {`
-          (function() { // DON'T EDIT BELOW THIS LINE
-    var d = document, s = d.createElement('script');
-    s.src = 'https://https-sh-zanixon-xyz.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-    })();
-        `}
-      </script>
       <footer style={{ marginTop: '20px', borderTop: '1px solid #ccc', paddingTop: '10px' }}>
         <p>&copy; {new Date().getFullYear()} Created by Yusupkakuu</p>
       </footer>
