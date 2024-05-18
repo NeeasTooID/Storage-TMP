@@ -1,20 +1,26 @@
-import React from 'react';
-import { useRouter } from 'next/router';
+import React, { useState } from 'react';
 
 const apiEndpoints = [
   {
     method: 'GET',
     path: '/api/example',
+    description: 'Fetches example data',
     requestBody: null,
-    response: '{ "data": "example" }',
+    response: null,
   },
 ];
 
 const Page: React.FC = () => {
-  const router = useRouter();
+  const [response, setResponse] = useState('');
 
-  const handleNavigation = (path: string) => {
-    router.push(path);
+  const handleFetch = async (endpoint: string) => {
+    try {
+      const res = await fetch(endpoint);
+      const data = await res.json();
+      setResponse(JSON.stringify(data, null, 2));
+    } catch (error) {
+      setResponse(`Error: ${error.message}`);
+    }
   };
 
   return (
@@ -33,9 +39,15 @@ const Page: React.FC = () => {
           <h2>Endpoints</h2>
           {apiEndpoints.map((endpoint, index) => (
             <div key={index} style={{ marginBottom: '20px' }}>
-              <h3 style={{ cursor: 'pointer', color: 'blue', textDecoration: 'underline' }} onClick={() => handleNavigation(endpoint.path)}>
-                {endpoint.method} {endpoint.path}
+              <h3>
+                <button
+                  onClick={() => handleFetch(endpoint.path)}
+                  style={{ background: 'none', border: 'none', color: 'blue', textDecoration: 'underline', cursor: 'pointer', padding: 0 }}
+                >
+                  {endpoint.method} {endpoint.path}
+                </button>
               </h3>
+              <p>{endpoint.description}</p>
               {endpoint.requestBody && (
                 <>
                   <h4>Request Body</h4>
@@ -46,7 +58,7 @@ const Page: React.FC = () => {
               )}
               <h4>Response</h4>
               <pre>
-                <code>{endpoint.response}</code>
+                <code>{response}</code>
               </pre>
             </div>
           ))}
