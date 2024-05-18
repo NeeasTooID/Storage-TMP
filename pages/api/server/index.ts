@@ -1,50 +1,25 @@
-import React, { useState, useEffect } from 'react';
+// pages/api/server.ts
+import { NextApiRequest, NextApiResponse } from 'next';
 
-const Page = () => {
-  const [serverTime, setServerTime] = useState('');
-  const [userCount, setUserCount] = useState(0);
-  const [totalRequests, setTotalRequests] = useState(0);
-  const [ramUsage, setRamUsage] = useState('');
-  const [cpuUsage, setCpuUsage] = useState('');
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  const getRandomInt = (min: number, max: number) => {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  };
 
-  useEffect(() => {
-    // Fungsi untuk memperbarui informasi dari backend
-    const fetchServerInfo = async () => {
-      try {
-        const response = await fetch('/api/server-info'); // Ganti dengan endpoint backend Anda
-        const data = await response.json();
-        setServerTime(data.serverTime);
-        setUserCount(data.userCount);
-        setTotalRequests(data.totalRequests);
-        setRamUsage(data.ramUsage);
-        setCpuUsage(data.cpuUsage);
-      } catch (error) {
-        console.error('Error fetching server info:', error);
-      }
+  const getRandomUsage = () => {
+    return getRandomInt(0, 100);
+  };
+
+  const generateServerInfo = () => {
+    return {
+      serverTime: new Date().toISOString(),
+      userCount: getRandomInt(0, 100),
+      totalRequests: getRandomInt(0, 1000),
+      ramUsage: getRandomUsage(),
+      cpuUsage: getRandomUsage(),
     };
+  };
 
-    // Panggil fungsi fetchServerInfo saat komponen dimuat
-    fetchServerInfo();
-
-    // Atur interval untuk memperbarui informasi secara periodik
-    const interval = setInterval(fetchServerInfo, 5000); // Misalnya, perbarui setiap 5 detik
-
-    // Bersihkan interval saat komponen dibongkar
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <div>
-      <h2>Console</h2>
-      <div>
-        <p>Server Time: {serverTime}</p>
-        <p>User Count: {userCount}</p>
-        <p>Total Requests: {totalRequests}</p>
-        <p>RAM Usage: {ramUsage}</p>
-        <p>CPU Usage: {cpuUsage}</p>
-      </div>
-    </div>
-  );
-};
-
-export default Page;
+  // Mengirimkan data dalam format JSON
+  res.status(200).json(generateServerInfo());
+}
