@@ -11,7 +11,7 @@ const apiEndpoints = [
   },
   {
     method: 'GET',
-    path: '/api/server',
+    path: '/api/maid',
     description: 'Fetches server data from https://sh.zanixon.xyz/api/server.\nExample response:\n{ "serverTime": "01:57:10 AM", "totalRequestsToday": 100, "ramUsage": "20.00%", "cpuUsage": "15.00%" }',
     requestBody: null,
   },
