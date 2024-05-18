@@ -1,17 +1,22 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 
 const apiEndpoints = [
   {
     method: 'GET',
     path: '/api/example',
-    description: 'Fetches example data',
-    curl: 'curl -X GET https://example.com/api/example',
     requestBody: null,
     response: '{ "data": "example" }',
   },
 ];
 
 const Page: React.FC = () => {
+  const router = useRouter();
+
+  const handleNavigation = (path: string) => {
+    router.push(path);
+  };
+
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
       <h1>API Documentation</h1>
@@ -28,11 +33,9 @@ const Page: React.FC = () => {
           <h2>Endpoints</h2>
           {apiEndpoints.map((endpoint, index) => (
             <div key={index} style={{ marginBottom: '20px' }}>
-              <h3>{endpoint.method} {endpoint.path}</h3>
-              <p>{endpoint.description}</p>
-              <pre>
-                <code>{endpoint.curl}</code>
-              </pre>
+              <h3 style={{ cursor: 'pointer', color: 'blue', textDecoration: 'underline' }} onClick={() => handleNavigation(endpoint.path)}>
+                {endpoint.method} {endpoint.path}
+              </h3>
               {endpoint.requestBody && (
                 <>
                   <h4>Request Body</h4>
