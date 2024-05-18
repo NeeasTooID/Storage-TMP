@@ -1,4 +1,3 @@
-// pages/api/server.ts
 import { NextApiRequest, NextApiResponse } from 'next';
 import si from 'systeminformation'; // Modul untuk memperoleh informasi sistem
 import fs from 'fs';
