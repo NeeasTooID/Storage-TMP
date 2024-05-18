@@ -82,12 +82,16 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       <body>
         <h1>Waifu Images</h1>
         <div class="container">
-          ${data.images.map((image: any) => `
-            <div class="image-container">
-              <img src="${image.url}" alt="Waifu Image" />
-              <p>Artist: <a href="${image.artist.pixiv}" target="_blank" rel="noopener noreferrer">${image.artist.name}</a></p>
-            </div>
-          `).join('')}
+          ${data.images.map((image: any) => {
+            const artistName = image.artist?.name || 'Not Found';
+            const artistPixiv = image.artist?.pixiv ? `<a href="${image.artist.pixiv}" target="_blank" rel="noopener noreferrer">${artistName}</a>` : artistName;
+            return `
+              <div class="image-container">
+                <img src="${image.url}" alt="Waifu Image" />
+                <p>Artist: ${artistPixiv}</p>
+              </div>
+            `;
+          }).join('')}
         </div>
         <h2>JSON Result</h2>
         <pre>${JSON.stringify(data, null, 2)}</pre>
