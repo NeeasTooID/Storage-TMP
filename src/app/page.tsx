@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState } from 'react';
 
 const apiEndpoints = [
@@ -20,7 +20,11 @@ const Page: React.FC = () => {
       const data = await res.json();
       setResponse(JSON.stringify(data, null, 2));
     } catch (error) {
-      setResponse(`Error: ${error.message}`);
+      if (error instanceof Error) {
+        setResponse(`Error: ${error.message}`);
+      } else {
+        setResponse('An unknown error occurred');
+      }
     }
   };
 
