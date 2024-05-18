@@ -16,43 +16,66 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Waifu Images</title>
         <style>
-          body { 
-            font-family: Arial, sans-serif; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            height: 100vh; 
-            margin: 0; 
-            background-color: #f0f0f0; 
+          body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
           }
-          .container { 
-            display: flex; 
-            flex-wrap: wrap; 
-            justify-content: center; 
-            align-items: center; 
-            text-align: center; 
+          .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
           }
-          .image-container { 
-            margin: 20px; 
+          .image-container {
+            background: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 10px;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            flex: 1 1 calc(25% - 20px);
+            box-sizing: border-box;
+            max-width: calc(25% - 20px);
           }
-          .image-container img { 
-            width: 200px; 
-            height: auto; 
-            border-radius: 8px; 
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+          .image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
           }
-          pre { 
-            background: #f4f4f4; 
-            padding: 10px; 
-            border-radius: 5px; 
-            white-space: pre-wrap; 
-            word-wrap: break-word; 
-            text-align: left; 
-            overflow-x: auto; 
-            margin-top: 20px; 
+          .image-container p {
+            margin: 5px 0 0;
+            font-size: 0.9em;
+            text-align: center;
           }
-          h1, h2 { 
-            margin-bottom: 20px; 
+          .image-container a {
+            color: #0070f3;
+            text-decoration: none;
+          }
+          .image-container a:hover {
+            text-decoration: underline;
+          }
+          h1 {
+            text-align: center;
+          }
+          pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+          }
+          @media (max-width: 768px) {
+            .image-container {
+              flex: 1 1 calc(50% - 20px);
+              max-width: calc(50% - 20px);
+            }
+          }
+          @media (max-width: 480px) {
+            .image-container {
+              flex: 1 1 100%;
+              max-width: 100%;
+            }
           }
         </style>
       </head>
