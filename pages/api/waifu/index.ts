@@ -14,7 +14,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Waifu Images</title>
+        <title>NeastooAPI</title>
         <style>
           body {
             font-family: Arial, sans-serif;
@@ -80,7 +80,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         </style>
       </head>
       <body>
-        <h1>Waifu Images</h1>
+        <h1>Waifu Generator V1</h1>
         <div class="container">
           ${data.images.map((image: any) => {
             const artistName = image.artist?.name || 'Not Found';
