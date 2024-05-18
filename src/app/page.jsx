@@ -4,7 +4,7 @@ import { Analytics } from '@vercel/analytics/react';
 
 const apiEndpoints = [
   {
-    category: 'Anime',
+    category: 'Anime Foto',
     endpoints: [
       {
         method: 'GET',
